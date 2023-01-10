@@ -2,12 +2,12 @@
   <mat-card-header >
     <mat-card-title-group>
       <mat-card-title>
-        Log in
+        <p>Войти в акаунт</p>
       </mat-card-title>
     </mat-card-title-group>
   </mat-card-header>
   <mat-card-content>
-    <form [formGroup]="login">
+    <form [formGroup]="userData">
 
       <mat-form-field appearance="outline">
         <mat-label>Пошта</mat-label>
@@ -26,6 +26,6 @@
   </mat-card-content>
   <mat-divider></mat-divider>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="log()" [disabled]="!login.valid">Log in</button>
+    <button mat-raised-button color="primary" (click)="login()" [disabled]="!userData.valid">Log in</button>
   </mat-card-actions>
 </mat-card>

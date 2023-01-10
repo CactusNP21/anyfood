@@ -15,25 +15,35 @@ export class AuthenticationComponent {
   private _snackBar: MatSnackBar) {
   }
 
-  login = this.fb.group({
+  userData = this.fb.group({
     login: ['', Validators.required],
     password: ['', Validators.required]
   })
 
-  log() {
-    const {login, password} = this.login.value
+  login() {
+    let {login, password} = this.userData.value
+    login += "@gmail.com"
     this.as.login(login!, password!).subscribe(value => {
       if (value instanceof HttpErrorResponse) {
         switch (value.status) {
-          case 404: {
+          case 400: {
             this.invalidLogin()
           }
         }
       }
+      console.log(value)
+    })
+  }
+  register() {
+
+  }
+  test() {
+    this.as.test('nazarkucher3212@gmail.com', "123456").subscribe(value =>{
+      console.log(value)
     })
   }
   invalidLogin () {
-    this.login.controls.password.setValue('')
+    this.userData.controls.password.setValue('')
     this._snackBar.open("Неправильний логін або пароль", "Зрозуміло", {
       duration: 10000,
       horizontalPosition:"center",

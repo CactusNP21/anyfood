@@ -12,7 +12,7 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    return this.http.post(url + 'login', {
+    return this.http.post(url + 'auth/login', {
       email,
       password
     }).pipe(
@@ -23,6 +23,13 @@ export class AuthenticationService {
         return of(Error(''))
       })
     )
+  }
+
+  test(email: string, password: string) {
+    return this.http.post("https://recipe-backend-test.vercel.app/auth/login", {
+      email,
+      password
+    })
   }
 
 }
