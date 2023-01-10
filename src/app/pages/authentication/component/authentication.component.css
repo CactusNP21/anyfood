@@ -22,3 +22,12 @@ form {
 mat-form-field {
   width: 90%;
 }
+
+:host ::ng-deep .mat-horizontal-stepper-header-container {
+  display: none ;
+}
+mat-card-actions {
+  justify-content: space-between;
+}
+
+

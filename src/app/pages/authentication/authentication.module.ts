@@ -9,21 +9,23 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 @NgModule({
   declarations: [
     AuthenticationComponent
   ],
-  imports: [
-    CommonModule,
-    AuthenticationRoutingModule,
-    MatCardModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatButtonModule,
-    MatListModule,
-    MatSnackBarModule
-  ]
+    imports: [
+        CommonModule,
+        AuthenticationRoutingModule,
+        MatCardModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatListModule,
+        MatSnackBarModule,
+        MatStepperModule
+    ]
 })
 export class AuthenticationModule { }
