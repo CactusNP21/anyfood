@@ -25,6 +25,21 @@ export class AuthenticationService {
     )
   }
 
+  register(email: string, username: string, password: string) {
+    return this.http.post(url + 'auth/register', {
+      email,
+      username,
+      password
+    }).pipe(
+      catchError(err => {
+        if (err instanceof HttpErrorResponse) {
+          return of(new HttpErrorResponse({status: err.status}))
+        }
+        return of(Error(''))
+      })
+    )
+  }
+
   test(email: string, password: string) {
     return this.http.post("https://recipe-backend-test.vercel.app/auth/login", {
       email,

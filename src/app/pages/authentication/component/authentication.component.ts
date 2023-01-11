@@ -16,35 +16,63 @@ export class AuthenticationComponent {
   }
 
   userData = this.fb.group({
-    login: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required]
+  })
+
+  userRegData = this.fb.group({
+    email: ['', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required]
   })
 
   login() {
-    let {login, password} = this.userData.value
-    login += "@gmail.com"
-    this.as.login(login!, password!).subscribe(value => {
+    const {email, password} = this.userData.value
+    this.as.login(email!, password!).subscribe(value => {
       if (value instanceof HttpErrorResponse) {
         switch (value.status) {
           case 400: {
-            this.invalidLogin()
+            this.userData.controls.email.setValue('')
+            this.notification('Не існує / неправильні дані')
           }
         }
       }
       console.log(value)
     })
   }
-  register() {
+  hint = 'Ще 6 симовлів'
 
+  updateLeft() {
+    const left = 6 - this.userRegData.controls.password.value!.length
+    this.hint = `Ще ${left} символів`
+    if (left <= 0) {
+      this.hint = ''
+    }
   }
-  test() {
-    this.as.test('nazarkucher3212@gmail.com', "123456").subscribe(value =>{
+  register() {
+    const {email, username, password} = this.userRegData.value
+    this.as.register(email!, username!, password!).subscribe(value =>  {
+      if (value instanceof HttpErrorResponse) {
+        switch (value.status) {
+          case 400: {
+            this.userRegData.controls.email.setValue('')
+            this.notification('Невірний формат')
+            break
+          }
+          case 403: {
+            this.userRegData.controls.email.setValue('')
+            this.notification('Такий користувач вже існує')
+            break
+          }
+        }
+      }
       console.log(value)
-    })
+      }
+    )
   }
-  invalidLogin () {
+  notification (message: string) {
     this.userData.controls.password.setValue('')
-    this._snackBar.open("Неправильний логін або пароль", "Зрозуміло", {
+    this._snackBar.open(message, "Зрозуміло", {
       duration: 10000,
       horizontalPosition:"center",
       verticalPosition: "top"

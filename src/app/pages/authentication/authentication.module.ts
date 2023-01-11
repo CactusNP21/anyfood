@@ -10,22 +10,24 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatListModule} from "@angular/material/list";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatStepperModule} from "@angular/material/stepper";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
   declarations: [
     AuthenticationComponent
   ],
-    imports: [
-        CommonModule,
-        AuthenticationRoutingModule,
-        MatCardModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatButtonModule,
-        MatListModule,
-        MatSnackBarModule,
-        MatStepperModule
-    ]
+  imports: [
+    CommonModule,
+    AuthenticationRoutingModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatStepperModule,
+    MatIconModule
+  ]
 })
 export class AuthenticationModule { }
