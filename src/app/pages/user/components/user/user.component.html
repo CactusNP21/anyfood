@@ -1,0 +1,32 @@
+<div class="user-page">
+  <header>
+    <h2>{{date | date}}</h2>
+    <h2>Привіт, {{username}}</h2>
+  </header>
+  <h1>Що приготуємо сьогодні?</h1>
+
+  <button mat-raised-button class="saved">
+    Збережені страви
+    <mat-icon>arrow_right_alt</mat-icon>
+  </button>
+
+  <mat-card class="created">
+    <mat-card-title-group>
+      <mat-card-title>
+        <div class="title">
+          <mat-icon>arrow_right_alt</mat-icon>
+          Створені страви
+        </div>
+      </mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <button mat-flat-button [routerLink]="['create-dish']">Створити страву</button>
+    </mat-card-content>
+  </mat-card>
+
+  <button mat-raised-button class="shopping">
+    Cписок покупок
+    <mat-icon>arrow_right_alt</mat-icon>
+  </button>
+
+</div>

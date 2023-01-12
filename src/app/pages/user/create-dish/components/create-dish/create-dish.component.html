@@ -1,0 +1,20 @@
+<mat-horizontal-stepper>
+
+  <mat-step>
+    <div class="container">
+      <app-ingredients [form]="dish"></app-ingredients>
+    </div>
+  </mat-step>
+
+  <mat-step>
+    <div class="container">
+      <app-steps [form]="dish"></app-steps>
+    </div>
+  </mat-step>
+
+  <mat-step></mat-step>
+  <mat-step>
+    <button (click)="log()">log</button>
+  </mat-step>
+</mat-horizontal-stepper>
+

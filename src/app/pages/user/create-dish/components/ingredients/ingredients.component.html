@@ -1,0 +1,17 @@
+<form [formGroup]=form>
+  <div formArrayName="i">
+    <mat-form-field appearance="outline" *ngFor="let _ of ingredients.controls; let i=index">
+      <input matInput [formControlName]="i"
+             (keyup)="search(_.value)" [matAutocomplete]="auto" name="item">
+      <mat-autocomplete #auto autoActiveFirstOption panelWidth="auto">
+        <mat-option *ngFor="let item of items$ | async" [value]="item.name">
+          <div class="option">
+            <img src="{{item.mainImage}}" alt="" height="50">
+            {{item.name}}
+          </div>
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <button (click)="addIng()">add</button>
+  </div>
+</form>

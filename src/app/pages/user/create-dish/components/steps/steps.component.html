@@ -1,0 +1,9 @@
+<form [formGroup]=form>
+  <div formArrayName="b">
+    <mat-form-field appearance="outline" *ngFor="let _ of steps.controls; let i=index">
+      <input matInput [formControlName]="i"
+             name="item">
+    </mat-form-field>
+    <button (click)="addStep()">add</button>
+  </div>
+</form>

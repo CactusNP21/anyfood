@@ -1,1 +1,14 @@
-<button [routerLink]="['auth']">AUTH</button>
+<mat-button-toggle-group #group="matButtonToggleGroup" >
+  <mat-button-toggle value="discovery" aria-label="discovery" [routerLink]="['']">
+    <mat-icon>public</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="discovery" aria-label="discovery" [routerLink]="['']">
+    <mat-icon>list</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="discovery" aria-label="discovery" [routerLink]="['']">
+    <mat-icon class="material-symbols-outlined">shopping_cart_checkout</mat-icon>
+  </mat-button-toggle>
+  <mat-button-toggle value="discovery" aria-label="discovery" [routerLink]="['user']">
+    <mat-icon >person_filled</mat-icon>
+  </mat-button-toggle>
+</mat-button-toggle-group>

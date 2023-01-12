@@ -1,0 +1,70 @@
+.user-page {
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 3vh;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  gap: 5vh;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.saved {
+  width: 90%;
+  height: 8vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  background-color: #ACC8E5 !important;
+  color: #112A46 !important;
+}
+.created mat-card-title-group {
+  position: relative;
+  left: 10%;
+}
+
+mat-card-title-group {
+  display: flex;
+  align-items: center;
+  height: 6vh;
+  gap: 4vw;
+}
+.created {
+  width: 90%;
+  min-height: 8vh;
+  background-color: #ffe66b;
+  color: #222222;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5vw;
+}
+.created button {
+  width: 80%;
+  height: 6vh;
+  background-color: rgba(180, 11, 110, 0.35) !important;
+}
+ mat-card {
+  gap: 2vh;
+}
+
+.shopping {
+   width: 90%;
+   height: 8vh;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.25rem;
+   background-color:#6babff  !important;
+   color:  #002448 !important;
+}

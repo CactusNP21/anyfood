@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {url} from "../../../core/constants";
 import {catchError, of} from "rxjs";
+import {User} from "../../../models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    return this.http.post(url + 'auth/login', {
+    return this.http.post<User>(url + 'auth/login', {
       email,
       password
     }).pipe(
@@ -26,7 +27,7 @@ export class AuthenticationService {
   }
 
   register(email: string, username: string, password: string) {
-    return this.http.post(url + 'auth/register', {
+    return this.http.post<User>(url + 'auth/register', {
       email,
       username,
       password
