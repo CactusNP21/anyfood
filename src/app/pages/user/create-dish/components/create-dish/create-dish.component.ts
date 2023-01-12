@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
-import {FormArray, FormBuilder, FormControl} from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ApiSilpoService} from "../../service/api-silpo.service";
-import {map} from "rxjs";
 import {debounce} from "lodash-es";
 
 export interface TestForm {
-  i: FormArray<FormControl<string | null>>
+  i: FormArray<
+    FormControl<{name: string | null; unit: string | null; price: string | null; quantity: string | null;}>
+  >
+
   b: FormArray<FormControl<string | null>>
 }
 
@@ -17,19 +19,25 @@ export interface TestForm {
 })
 export class CreateDishComponent {
   constructor(private fb: FormBuilder, private silpo: ApiSilpoService) {
-      this.search = debounce(this.search, 1000)
+    this.search = debounce(this.search, 1000)
   }
-  items$ = this.silpo.getItems()
 
-  dish = this.fb.group<TestForm>({
-    i: this.fb.array([
-      this.fb.control('')
-    ]),
+
+  ingredients = this.fb.group({
+    name: ['', Validators.required],
+    unit: ['', Validators.required],
+    price: ['', Validators.required],
+    quantity: ['', Validators.required]
+  })
+
+  dish = this.fb.group<TestForm>(<TestForm>{
+    i: this.fb.array([this.fb.control(this.ingredients)]),
     b: this.fb.array([
       this.fb.control('')
     ])
   })
-  search(s : string) {
+
+  search(s: string) {
     this.silpo.searchItems(s)
   }
 

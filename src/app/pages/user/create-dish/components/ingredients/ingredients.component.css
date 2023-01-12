@@ -3,3 +3,38 @@
   align-items: center;
   gap: 0.25rem;
 }
+
+mat-form-field {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}
+
+.settings {
+  display: flex;
+  flex-direction: row;
+  gap: 4vw;
+}
+
+.settings mat-form-field {
+  width: 40%;
+}
+
+.added {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow: auto;
+}
+
+.added mat-form-field{
+  width: 40%;
+}

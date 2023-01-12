@@ -16,14 +16,10 @@ export interface Items{
 })
 export class ApiSilpoService {
 
-  items = new BehaviorSubject<Items[]>([])
-
   constructor(private http: HttpClient) { }
-  getItems () {
-    return this.items.asObservable()
-  }
+
   searchItems(name: string) {
-    this.http.post<SilpoRes>('https://api.catalog.ecom.silpo.ua/api/2.0/exec/EcomCatalogGlobal',
+    return this.http.post<SilpoRes>('https://api.catalog.ecom.silpo.ua/api/2.0/exec/EcomCatalogGlobal',
       {
         method: 'GetSimpleCatalogItems',
         data: {
@@ -34,8 +30,6 @@ export class ApiSilpoService {
           skuPerPage: 100,
           pageNumber: 1,
         },
-      }).subscribe(value => {
-        this.items.next(value.items)
-    })
+      })
   }
 }
