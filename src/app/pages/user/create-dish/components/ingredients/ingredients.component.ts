@@ -1,8 +1,6 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Component, ViewChild} from '@angular/core';
 import {ApiSilpoService, Items} from "../../service/api-silpo.service";
 import {debounce} from "lodash-es";
-import {TestForm} from "../create-dish/create-dish.component";
 import {MatTable} from "@angular/material/table";
 
 @Component({
@@ -12,12 +10,12 @@ import {MatTable} from "@angular/material/table";
 })
 export class IngredientsComponent{
   @ViewChild(MatTable) table!: MatTable<any>
-  ingredients: Items[] = []
+  ingredients: (Items & {suffix: string})[] = []
   items: Items[] = []
   searchVal = ''
   displayedColumns = ['name', 'unit']
 
-  constructor(private fb: FormBuilder, private silpo: ApiSilpoService) {
+  constructor( private silpo: ApiSilpoService) {
     this.search = debounce(this.search, 500)
   }
 
@@ -31,7 +29,15 @@ export class IngredientsComponent{
     const item = this.items.find(value => value.name === this.searchVal)
     if (item) {
       const {name, unit, price, mainImage} = item
-      this.ingredients.push({name, mainImage, price, unit})
+      const quantity = unit.match(/(\d+)/g)
+      let suffix;
+      if (quantity) {
+         suffix = unit.slice(quantity[0].length)
+      } else {
+        suffix = unit.slice(0)
+      }
+
+      this.ingredients.push({name, mainImage, price, unit, suffix})
       this.table.renderRows()
       this.searchVal = ''
       this.items = []
@@ -45,6 +51,7 @@ export class IngredientsComponent{
   deleteIngredients() {
     this.ingredients = this.ingredients.filter(value => value.name !== this.lastClicked)
   }
-
-
+  log() {
+    console.log('works')
+  }
 }

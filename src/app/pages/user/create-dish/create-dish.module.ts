@@ -14,6 +14,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatMenuModule} from "@angular/material/menu";
+import {StopPropModule} from "../../../shared/directives/stop-prop.module";
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {MatMenuModule} from "@angular/material/menu";
     FormsModule,
     MatButtonModule,
     MatTableModule,
-    MatMenuModule
+    MatMenuModule,
+    StopPropModule,
   ]
 })
 export class CreateDishModule { }

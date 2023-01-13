@@ -38,3 +38,18 @@ textarea {
 .added mat-form-field{
   width: 40%;
 }
+
+.test{
+  width: 40%;
+}
+
+.test1 {
+  display: flex;
+  flex-direction: row;
+}
+.test1 input {
+  width: 60%;
+  box-sizing: border-box;
+  text-align: right;
+  border-width: 0 0 1px 0;
+}
