@@ -11,9 +11,9 @@
         <div class="des">
           <img src="{{info.img}}" alt="" height="80" loading="lazy">
           <div class="chips">
-          <span *ngFor="let topic of info.topics" class="chip">
-            {{topic}}
-          </span>
+              <span *ngFor="let topic of info.topics" class="chip">
+              {{topic}}
+            </span>
           </div>
           <p>{{info.des}}</p>
           <p>
@@ -26,7 +26,9 @@
     </mat-panel-description>
     <mat-action-row>
       <button mat-raised-button color="primary">Детальніше</button>
-      <button mat-icon-button><mat-icon>add</mat-icon></button>
+      <button mat-icon-button>
+        <mat-icon>add</mat-icon>
+      </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-dialog-content>

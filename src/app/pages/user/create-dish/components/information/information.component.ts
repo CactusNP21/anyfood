@@ -50,7 +50,7 @@ export class InformationComponent {
   }
   log() {
     this.info.controls.topics.setValue([
-      'кукурудза', "крабові", "майонезний"
+      'кукурудза', "крабові", "майонезний", "тестовий"
     ])
 
     this.dish.setMainInfo(<DishInfo>this.info.value)

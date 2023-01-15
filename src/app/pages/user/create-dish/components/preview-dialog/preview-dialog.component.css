@@ -29,20 +29,27 @@ mat-panel-description {
   justify-content: center;
 }
 
+.wrapper {
+  width: 100%;
+  overflow: scroll;
+}
 .chips {
   display: flex;
-  overflow: auto;
   width: 100%;
   height: auto;
+  overflow: scroll;
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 10px;
   border-radius: 16px;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .chip {
+  margin: 0 5px;
   width: auto;
+  height: auto;
   box-sizing: border-box;
   background-color: #ACC8E5;
   padding: 8px 16px;
@@ -77,4 +84,7 @@ mat-action-row {
 
 p {
   margin: 0;
+}
+::-webkit-scrollbar {
+  width: 10px;
 }
