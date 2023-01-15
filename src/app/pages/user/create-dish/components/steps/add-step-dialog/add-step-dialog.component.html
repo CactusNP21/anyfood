@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Розділ приготування</h2>
+<div mat-dialog-content>
+  <h3>Заголовок розділу</h3>
+  <mat-form-field>
+    <input matInput #head required minlength="1">
+  </mat-form-field>
+  <h3>Опис розділу</h3>
+  <mat-form-field>
+    <textarea matInput #des required></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="{title: head.value, des: des.value}"
+  [disabled]="head.value.length === 0 || des.value.length === 0"
+  >Ok</button>
+</div>

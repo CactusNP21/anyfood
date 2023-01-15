@@ -1,0 +1,21 @@
+mat-accordion{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+mat-expansion-panel {
+  border: 0;
+}
+
+.add-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3vh;
+}
+
+.add-step button {
+  background-color: #156f15;
+  color: white;
+}

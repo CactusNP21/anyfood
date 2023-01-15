@@ -1,0 +1,45 @@
+<form [formGroup]="info">
+  <mat-form-field>
+    <mat-label>Назва страви</mat-label>
+    <input matInput placeholder="Крабові палички" formControlName="title">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Короткий опис</mat-label>
+    <textarea matInput placeholder="Салат з крабовими паличками та кукурудзою" formControlName="des"></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Час приготування</mat-label>
+    <input type="number" [min]="1" matInput placeholder="45" formControlName="duration">
+    <span matSuffix class="time">хв</span>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Порцій</mat-label>
+    <input type="number" matInput placeholder="Порцій" formControlName="servings" [min]="1">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Зображення</mat-label>
+    <input matInput placeholder="Посилання на зображення" formControlName="img">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Топіки</mat-label>
+    <mat-chip-grid #chipGrid>
+      <mat-chip-row *ngFor="let topic of topics"
+                    (removed)="remove(topic)">
+        {{topic}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input placeholder="риба..."
+             formControlName="topics"
+             [matChipInputFor]="chipGrid"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="true"
+             (matChipInputTokenEnd)="add($event)"/>
+    </mat-chip-grid>
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="false"
+    (click)="log()"
+  >Попередній огляд</button>
+</form>
+<!--!(info.valid && completed)-->

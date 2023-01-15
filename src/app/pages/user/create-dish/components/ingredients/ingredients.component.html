@@ -16,18 +16,14 @@
 
 <table mat-table [dataSource]="ingredients" class="mat-elevation-z1">
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Назва </th>
+    <th mat-header-cell *matHeaderCellDef>Назва інгредієнту</th>
     <td mat-cell *matCellDef="let element"> {{element['name']}} </td>
   </ng-container>
   <ng-container matColumnDef="unit">
-    <th mat-header-cell *matHeaderCellDef> Кількість </th>
+    <th mat-header-cell *matHeaderCellDef>Кількість</th>
     <td mat-cell *matCellDef="let element" appStopPropagation class="test">
-      <div class="test1"><input type="number" #i placeholder="0" (change)="element.unit =i.value">
-        <span>{{element.suffix}}</span></div>
-<!--      <mat-form-field appearance="outline">-->
-<!--        <input matInput (change)="element.unit =i.value" #i type="number">-->
-<!--        <span matSuffix>{{element.suffix}}</span>-->
-<!--      </mat-form-field>-->
+      <div class="test1"><input type="number" #i placeholder="0" (change)="element.quantity =i.value" [min]="0">
+        <span>{{element.unit}}</span></div>
     </td>
   </ng-container>
 

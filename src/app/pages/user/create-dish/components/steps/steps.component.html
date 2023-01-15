@@ -1,9 +1,22 @@
-<form [formGroup]=form>
-  <div formArrayName="b">
-    <mat-form-field appearance="outline" *ngFor="let _ of steps.controls; let i=index">
-      <input matInput [formControlName]="i"
-             name="item">
-    </mat-form-field>
-    <button (click)="addStep()">add</button>
-  </div>
-</form>
+<div class="add-step">
+  <button (click)="addStep()" mat-flat-button class="add-step">Додати розділ</button>
+</div>
+<mat-accordion cdkDropList (cdkDropListDropped)="drop($event)">
+    <mat-expansion-panel *ngFor="let step of steps; let i=index" cdkDrag>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{step.title}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+        <p>
+          {{step.des}}
+        </p>
+
+      </mat-panel-description>
+      <mat-action-row>
+        <button mat-flat-button color="warn" (click)="delete(step.des)">Видалити</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+

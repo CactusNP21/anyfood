@@ -15,28 +15,44 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatMenuModule} from "@angular/material/menu";
 import {StopPropModule} from "../../../shared/directives/stop-prop.module";
+import { AddStepDialogComponent } from './components/steps/add-step-dialog/add-step-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
+import { InformationComponent } from './components/information/information.component';
+import {MatChipsModule} from "@angular/material/chips";
+import { PreviewDialogComponent } from './components/preview-dialog/preview-dialog.component';
+
 
 
 @NgModule({
   declarations: [
     CreateDishComponent,
     IngredientsComponent,
-    StepsComponent
+    StepsComponent,
+    AddStepDialogComponent,
+    InformationComponent,
+    PreviewDialogComponent,
   ],
-  imports: [
-    CommonModule,
-    CreateDishRoutingModule,
-    MatStepperModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatDividerModule,
-    MatIconModule,
-    FormsModule,
-    MatButtonModule,
-    MatTableModule,
-    MatMenuModule,
-    StopPropModule,
-  ]
+    imports: [
+        CommonModule,
+        CreateDishRoutingModule,
+        MatStepperModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatDividerModule,
+        MatIconModule,
+        FormsModule,
+        MatButtonModule,
+        MatTableModule,
+        MatMenuModule,
+        StopPropModule,
+        MatDialogModule,
+        MatExpansionModule,
+        CdkDropList,
+        CdkDrag,
+        MatChipsModule,
+    ]
 })
 export class CreateDishModule { }

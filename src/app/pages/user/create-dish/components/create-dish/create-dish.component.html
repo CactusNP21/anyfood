@@ -8,13 +8,14 @@
 
   <mat-step>
     <div class="container">
-      <app-steps [form]="dish"></app-steps>
+      <app-steps></app-steps>
     </div>
   </mat-step>
 
-  <mat-step></mat-step>
   <mat-step>
-    <button (click)="log()">log</button>
+    <div class="container">
+      <app-information></app-information>
+    </div>
   </mat-step>
 </mat-horizontal-stepper>
 

@@ -1,0 +1,14 @@
+mat-form-field{
+  width: 90%;
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.time {
+  margin-right: 4vw;
+}

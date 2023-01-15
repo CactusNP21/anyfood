@@ -1,0 +1,80 @@
+mat-panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  width: 100%;
+}
+
+mat-expansion-panel-header {
+  height: auto;
+}
+
+mat-expansion-panel {
+  width: 100%;
+}
+
+mat-panel-description {
+  margin-top: 3vh;
+
+}
+
+.des {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.chips {
+  display: flex;
+  overflow: auto;
+  width: 100%;
+  height: auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+  border-radius: 16px;
+  align-items: center;
+}
+
+.chip {
+  width: auto;
+  box-sizing: border-box;
+  background-color: #ACC8E5;
+  padding: 8px 16px;
+  color: #000a51;
+  border-radius: 16px;
+}
+
+.title {
+  width: 60%;
+}
+
+.price {
+  width: 30%;
+  flex-wrap: wrap;
+  color: darkgreen;
+}
+
+.additional {
+  margin-left: auto;
+  font-size: 8px;
+  color: grey;
+}
+
+mat-action-row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.time {
+  color: #027a3b;
+}
+
+p {
+  margin: 0;
+}
