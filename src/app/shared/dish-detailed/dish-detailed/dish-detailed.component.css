@@ -1,0 +1,27 @@
+mat-card {
+  margin-top: 5vh;
+}
+
+mat-card-title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+}
+
+.servings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  height: 152px;
+}
+
+mat-dialog-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}

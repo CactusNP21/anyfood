@@ -1,9 +1,12 @@
+mat-expansion-panel {
+  width: 90%;
+}
 
 mat-panel-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 50px;
+  min-height: 64px;
   width: 100%;
 }
 
@@ -11,9 +14,7 @@ mat-expansion-panel-header {
   height: auto;
 }
 
-mat-expansion-panel {
-  width: 100%;
-}
+
 
 mat-panel-description {
   margin-top: 3vh;
@@ -42,7 +43,6 @@ mat-panel-description {
   overflow: scroll;
   flex-direction: row;
   flex-wrap: nowrap;
-  gap: 10px;
   border-radius: 16px;
   align-items: center;
   box-sizing: border-box;
@@ -90,32 +90,4 @@ p {
 
 ::-webkit-scrollbar {
   width: 10px;
-}
-
-mat-card {
-  margin-top: 5vh;
-}
-
-mat-card-title-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3vh;
-}
-
-.servings {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.img {
-  height: 152px;
-}
-
-mat-dialog-actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  
 }

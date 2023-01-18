@@ -24,8 +24,16 @@ export class UserStateService {
     this.email = email
   }
 
-  getUser(): string {
+  getUsername(): string {
     return this.username
   }
-
+  get userToken(): string {
+    return this.token
+  }
+  get userId(): string {
+    return this._id
+  }
+  get userRole(): string {
+    return this.role
+  }
 }

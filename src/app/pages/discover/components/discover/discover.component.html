@@ -1,0 +1,15 @@
+<div class="view">
+  <app-search (search)="search($event)"></app-search>
+
+    <ng-container *ngFor="let dish of dishes">
+      <app-dish-brief [dish]="dish" >
+        <mat-action-row>
+          <button mat-raised-button color="primary">Детальніше</button>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-action-row>
+      </app-dish-brief>
+    </ng-container>
+
+</div>

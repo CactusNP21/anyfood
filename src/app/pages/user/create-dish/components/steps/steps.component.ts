@@ -25,7 +25,7 @@ export class StepsComponent {
     console.log(this.steps)
   }
   addStep() {
-    const dialog: MatDialogRef<AddStepDialogComponent, { title: string, des: string } | undefined> = this.dialog.open(AddStepDialogComponent)
+    const dialog: MatDialogRef<AddStepDialogComponent, { title: string, description: string } | undefined> = this.dialog.open(AddStepDialogComponent)
     dialog.afterClosed().subscribe(
       value => {
         if (value) {
@@ -37,7 +37,7 @@ export class StepsComponent {
     )
   }
   delete(des: string) {
-    this.steps = this.steps.filter(value => value.des !== des)
+    this.steps = this.steps.filter(value => value.description !== des)
     this.cdr.markForCheck()
   }
 

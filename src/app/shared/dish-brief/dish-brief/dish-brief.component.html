@@ -1,0 +1,30 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <p class="title">{{dish.title}}</p>
+      <p class="price">{{dish.price * dish.servings | currency: '₴'}}</p>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <ng-template matExpansionPanelContent>
+    <mat-panel-description>
+
+      <div class="des">
+        <img src="{{dish.url}}" alt="" height="80" loading="lazy">
+        <div class="chips">
+              <span *ngFor="let topic of dish.topics" class="chip">
+              {{topic}}
+            </span>
+        </div>
+        <p>{{dish.description}}</p>
+        <p>
+          <span class="time">{{dish.duration}} </span>хв
+          <mat-icon>schedule</mat-icon>
+        </p>
+        <p class="additional">для 3х порцій*</p>
+      </div>
+
+    </mat-panel-description>
+    <ng-content>
+    </ng-content>
+  </ng-template>
+</mat-expansion-panel>

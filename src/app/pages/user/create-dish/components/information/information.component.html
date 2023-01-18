@@ -38,8 +38,8 @@
              (matChipInputTokenEnd)="add($event)"/>
     </mat-chip-grid>
   </mat-form-field>
-  <button mat-raised-button color="primary" [disabled]="false"
+  <button mat-raised-button color="primary" [disabled]="!(info.valid && completed)"
     (click)="log()"
   >Попередній огляд</button>
 </form>
-<!--!(info.valid && completed)-->
+

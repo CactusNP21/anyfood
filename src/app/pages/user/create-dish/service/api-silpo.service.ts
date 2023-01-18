@@ -30,6 +30,7 @@ export class ApiSilpoService {
           skuPerPage: 100,
           pageNumber: 1,
         },
-      })
+      },
+      {headers:{'skip': 'true'}})
   }
 }

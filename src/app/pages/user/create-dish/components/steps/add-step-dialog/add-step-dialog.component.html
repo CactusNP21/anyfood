@@ -11,7 +11,7 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="close()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="{title: head.value, des: des.value}"
+  <button mat-button [mat-dialog-close]="{title: head.value, description: des.value}"
   [disabled]="head.value.length === 0 || des.value.length === 0"
   >Ok</button>
 </div>

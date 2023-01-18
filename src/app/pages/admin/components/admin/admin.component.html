@@ -1,0 +1,12 @@
+<ng-container *ngFor="let dish of unapprovedDishes">
+  <app-dish-detailed [dish]="dish">
+    <p des class="des">
+      {{dish.description}}
+    </p>
+    <mat-action-row actions>
+      <button mat-raised-button color="primary" (click)="approve(dish._id)">Додати</button>
+      <button mat-raised-button color="warn" (click)="disapprove(dish._id)">Відхилити</button>
+    </mat-action-row>
+  </app-dish-detailed>
+</ng-container>
+<button (click)="log()">LOG</button>

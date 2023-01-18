@@ -44,6 +44,10 @@ export class NewDishStateService {
       a += c.price * c.quantity
       return a
     }, 0) / this.dish.information.servings)
+    this.dish.ingredients = this.dish.ingredients.map(value => {
+      value.quantity = Math.floor(value.quantity / info.servings)
+      return value
+    })
     console.log(this.completed)
     console.log(this.dish)
   }
@@ -51,4 +55,6 @@ export class NewDishStateService {
   get currentDish() {
     return this.dish
   }
+
+
 }

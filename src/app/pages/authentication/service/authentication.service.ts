@@ -41,11 +41,5 @@ export class AuthenticationService {
     )
   }
 
-  test(email: string, password: string) {
-    return this.http.post("https://recipe-backend-test.vercel.app/auth/login", {
-      email,
-      password
-    })
-  }
 
 }

@@ -1,0 +1,63 @@
+<mat-card>
+  <mat-card-header>
+
+    <mat-card-title-group>
+      <mat-card-title>
+        {{dish.title}}
+
+      </mat-card-title>
+      <img class="img" src="{{dish.url}}" alt="">
+      <div class="servings">
+        <h2>Порцій:</h2>
+        <mat-form-field appearance="outline" subscriptSizing="fixed">
+          <input matInput type="number">
+          <button matSuffix mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+          <button matPrefix mat-icon-button>
+            <mat-icon>remove</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+
+      <mat-divider></mat-divider>
+      <ng-content select="[des]"></ng-content>
+    </mat-card-title-group>
+
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list-item>
+      <mat-icon matListItemIcon color="primary">money</mat-icon>
+      <div class="ingredient"><span
+        class="price">{{ dish.price * dish.servings | currency: "₴"}}</span>
+      </div>
+    </mat-list-item>
+    <mat-list>
+      <mat-list-item *ngFor="let ingredient of dish.ingredients">
+        <mat-icon matListItemIcon color="primary">horizontal_rule</mat-icon>
+
+        <div class="ingredient">{{ingredient.name}}:
+          <span class="highlight">{{+ingredient.quantity * dish.servings}} {{ingredient.unit}}</span>
+        </div>
+
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+    <mat-vertical-stepper>
+      <ng-template matStepperIcon="edit" let-index="index">
+        {{index + 1}}
+      </ng-template>
+      <mat-step *ngFor="let step of dish.steps" label="{{step.title}}" completed="false">
+        <ng-template matStepContent>
+          <p>{{step.description}}</p>
+          <button mat-button matStepperNext color="primary">Далі</button>
+        </ng-template>
+      </mat-step>
+    </mat-vertical-stepper>
+
+  </mat-card-content>
+  <ng-content select="[actions]">
+
+  </ng-content>
+</mat-card>

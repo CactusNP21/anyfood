@@ -23,11 +23,11 @@ export class InformationComponent {
   }
   topics: string[] = []
   info = this.fb.group({
-    title: ['Крабовий салат ще 3', Validators.required],
-    des: ['Набір кукурудзи консервованої, крабових палочок, огірків, майонезу', Validators.required],
+    title: ['', Validators.required],
+    des: ['', Validators.required],
     servings: [3, Validators.required],
     duration: [30, Validators.required],
-    img: ['https://images.unian.net/photos/2019_12/thumb_files/1000_545_1577192910-5752.jpg'],
+    img: [],
     topics: [this.topics]
   })
   add(event: MatChipInputEvent): void {
@@ -49,9 +49,7 @@ export class InformationComponent {
     }
   }
   log() {
-    this.info.controls.topics.setValue([
-      'кукурудза', "крабові", "майонезний", "тестовий"
-    ])
+    this.info.controls.topics.setValue(this.topics)
 
     this.dish.setMainInfo(<DishInfo>this.info.value)
     this.dialog.open(PreviewDialogComponent, {

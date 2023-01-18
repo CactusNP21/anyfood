@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {AppComponent} from "./app.component";
+import {LoggedGuard} from "./pages/user/guard/logged.guard";
+import {AdminGuard} from "./pages/admin/guard/admin.guard";
 
 const routes: Routes = [
   {path: '', component: AppComponent},
@@ -10,7 +12,17 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule),
+    canActivate: [LoggedGuard]
+  },
+  {
+    path: 'discover',
+    loadChildren: () => import('./pages/discover/discover.module').then(m => m.DiscoverModule)
+  },
+  {
+    path: 'administrate',
+    loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule),
+    canActivate: [AdminGuard]
   }
 ];
 

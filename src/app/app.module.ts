@@ -7,7 +7,8 @@ import {RouterOutlet} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NavigationModule} from "./feature/navigation/navigation.module";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {JwtInterceptor} from "./core/interceptors/jwt.interceptor";
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import {HttpClientModule} from "@angular/common/http";
         NavigationModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}],
     exports: [
 
     ],

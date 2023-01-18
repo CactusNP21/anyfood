@@ -22,6 +22,8 @@ import {CdkDrag, CdkDropList} from "@angular/cdk/drag-drop";
 import { InformationComponent } from './components/information/information.component';
 import {MatChipsModule} from "@angular/material/chips";
 import { PreviewDialogComponent } from './components/preview-dialog/preview-dialog.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -34,25 +36,27 @@ import { PreviewDialogComponent } from './components/preview-dialog/preview-dial
     InformationComponent,
     PreviewDialogComponent,
   ],
-    imports: [
-        CommonModule,
-        CreateDishRoutingModule,
-        MatStepperModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        MatAutocompleteModule,
-        MatDividerModule,
-        MatIconModule,
-        FormsModule,
-        MatButtonModule,
-        MatTableModule,
-        MatMenuModule,
-        StopPropModule,
-        MatDialogModule,
-        MatExpansionModule,
-        CdkDropList,
-        CdkDrag,
-        MatChipsModule,
-    ]
+  imports: [
+    CommonModule,
+    CreateDishRoutingModule,
+    MatStepperModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatDividerModule,
+    MatIconModule,
+    FormsModule,
+    MatButtonModule,
+    MatTableModule,
+    MatMenuModule,
+    StopPropModule,
+    MatDialogModule,
+    MatExpansionModule,
+    CdkDropList,
+    CdkDrag,
+    MatChipsModule,
+    MatCardModule,
+    MatListModule,
+  ]
 })
 export class CreateDishModule { }
