@@ -24,6 +24,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import { PreviewDialogComponent } from './components/preview-dialog/preview-dialog.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 
@@ -57,6 +58,7 @@ import {MatListModule} from "@angular/material/list";
     MatChipsModule,
     MatCardModule,
     MatListModule,
+    MatSnackBarModule
   ]
 })
 export class CreateDishModule { }

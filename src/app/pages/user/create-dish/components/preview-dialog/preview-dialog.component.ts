@@ -35,7 +35,7 @@ export class PreviewDialogComponent implements OnInit{
       this.snack.open('Успішно відправлено на модерацію', 'Ок', {
         horizontalPosition: 'center',
         verticalPosition: "top",
-        duration: 1000
+        duration: 3000
       })
       this.router.navigate(['user'])
     })
