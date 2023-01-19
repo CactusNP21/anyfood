@@ -16,7 +16,7 @@ export class DishControllerService {
 
   getDishes(value: string, from?: string, to?: string): Observable<DishResponse[]> {
     return this.http.post<DishResponse[]>(url + 'dishes/get', {
-      filterCustom: value
+      customFilter: value
     })
   }
 
@@ -35,6 +35,9 @@ export class DishControllerService {
       steps,
       duration
     })
+  }
+  getDish(id: string) {
+    return this.http.get<DishResponse>(url + 'dishes/' + id)
   }
 
 

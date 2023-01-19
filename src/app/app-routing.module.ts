@@ -23,7 +23,11 @@ const routes: Routes = [
     path: 'administrate',
     loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule),
     canActivate: [AdminGuard]
-  }
+  },
+  {
+    path: 'dish',
+    loadChildren: () => import('./pages/dish/dish.module').then(m => m.DishModule),
+  },
 ];
 
 @NgModule({

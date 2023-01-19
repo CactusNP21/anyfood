@@ -10,11 +10,11 @@
       <div class="servings">
         <h2>Порцій:</h2>
         <mat-form-field appearance="outline" subscriptSizing="fixed">
-          <input matInput type="number">
-          <button matSuffix mat-icon-button>
+          <input matInput type="number" [value]="dish.servings.toString()">
+          <button matSuffix mat-icon-button (click)="dish.servings = dish.servings + 1">
             <mat-icon>add</mat-icon>
           </button>
-          <button matPrefix mat-icon-button>
+          <button matPrefix mat-icon-button (click)="dish.servings = dish.servings - 1">
             <mat-icon>remove</mat-icon>
           </button>
         </mat-form-field>
