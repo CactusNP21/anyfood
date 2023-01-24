@@ -9,6 +9,7 @@ import {NavigationModule} from "./feature/navigation/navigation.module";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {JwtInterceptor} from "./core/interceptors/jwt.interceptor";
 import {SpinnerInterceptor} from "./core/interceptors/spinner.interceptor";
+import {SpinnerOverlayModule} from "./feature/spinner-overlay/spinner-overlay.module";
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {SpinnerInterceptor} from "./core/interceptors/spinner.interceptor";
     BrowserAnimationsModule,
     NavigationModule,
     HttpClientModule,
+    SpinnerOverlayModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}],

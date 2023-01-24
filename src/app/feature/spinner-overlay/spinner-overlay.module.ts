@@ -5,13 +5,14 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 
+
 @NgModule({
   declarations: [
     SpinnerComponent
   ],
-    imports: [
-        CommonModule,
-        MatProgressSpinnerModule
-    ]
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+  ]
 })
 export class SpinnerOverlayModule { }

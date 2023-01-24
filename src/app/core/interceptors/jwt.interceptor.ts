@@ -7,7 +7,6 @@ import {
 } from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {UserStateService} from "../user-state/user-state.service";
-import {SpinnerOverlayService} from "../../feature/spinner-overlay/service/spinner-overlay.service";
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
