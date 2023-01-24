@@ -1,0 +1,9 @@
+.loader {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(105, 105, 105, 0.53);
+}

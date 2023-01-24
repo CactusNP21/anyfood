@@ -4,6 +4,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1vh;
+  margin-bottom: 2vh;
 }
 app-dish-brief {
   width: 90%;

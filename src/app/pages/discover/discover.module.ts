@@ -9,12 +9,19 @@ import { SearchComponent } from './components/search/search.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {DishBriefModule} from "../../shared/dish-brief/dish-brief.module";
 import {MatButtonModule} from "@angular/material/button";
+import {InitDishesResolver} from "./resolver/init-dishes.resolver";
+import { FilterDialogComponent } from './components/filter-dialog/filter-dialog.component';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatChipsModule} from "@angular/material/chips";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [
     DiscoverComponent,
-    SearchComponent
+    SearchComponent,
+    FilterDialogComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +30,14 @@ import {MatButtonModule} from "@angular/material/button";
     MatIconModule,
     MatExpansionModule,
     DishBriefModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatChipsModule,
+    FormsModule
+  ],
+  providers: [
+    InitDishesResolver
   ]
 })
 export class DiscoverModule { }

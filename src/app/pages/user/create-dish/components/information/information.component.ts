@@ -50,7 +50,8 @@ export class InformationComponent {
   }
   log() {
     this.info.controls.topics.setValue(this.topics)
-
+    this.info.value.title?.toLowerCase()
+    console.log(this.info.value)
     this.dish.setMainInfo(<DishInfo>this.info.value)
     this.dialog.open(PreviewDialogComponent, {
       minWidth: '95vw'
