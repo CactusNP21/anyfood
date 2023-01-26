@@ -23,19 +23,19 @@ import {FormsModule} from "@angular/forms";
     SearchComponent,
     FilterDialogComponent
   ],
-  imports: [
-    CommonModule,
-    DiscoverRoutingModule,
-    MatInputModule,
-    MatIconModule,
-    MatExpansionModule,
-    DishBriefModule,
-    MatButtonModule,
-    MatSliderModule,
-    MatDialogModule,
-    MatChipsModule,
-    FormsModule
-  ],
+    imports: [
+        CommonModule,
+        DiscoverRoutingModule,
+        MatInputModule,
+        MatIconModule,
+        MatExpansionModule,
+        DishBriefModule,
+        MatButtonModule,
+        MatSliderModule,
+        MatDialogModule,
+        MatChipsModule,
+        FormsModule,
+    ],
   providers: [
     InitDishesResolver
   ]

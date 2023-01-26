@@ -11,7 +11,8 @@ import {DishControllerService} from "../../../../core/dish-controller/dish-contr
 export class SearchComponent {
   @Output() search = new EventEmitter<string>()
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,
+              private dcs: DishControllerService) {
   }
   request(val: string) {
     this.search.emit(val)
@@ -19,7 +20,7 @@ export class SearchComponent {
   open() {
     this.dialog.open(FilterDialogComponent).afterClosed().subscribe(value => {
       if (value) {
-
+          this.dcs.config = value
       }
     })
   }

@@ -1,6 +1,19 @@
 mat-form-field {
-  padding: 3vh 0;
+padding-top: 3vh;
   width: 93vw;
   text-align: center;
 
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+  padding-bottom: 3vh;
+}
+
+.f-btn {
+  background-color: #8cc8ff !important;
+  color: #052713 !important;
 }

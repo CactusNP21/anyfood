@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Dish, DishResponse} from "../../models/dish";
 import {searchConfig, url} from "../constants";
-import {BehaviorSubject, Observable} from "rxjs";
+import { Observable} from "rxjs";
 import {UserStateService} from "../user-state/user-state.service";
 import {SearchConfig} from "../../models/search-config";
 
@@ -11,8 +11,11 @@ import {SearchConfig} from "../../models/search-config";
 })
 export class DishControllerService {
 
-  configSubject = new BehaviorSubject<SearchConfig>(searchConfig)
+  private _config: SearchConfig = searchConfig
 
+  set config(config: SearchConfig) {
+    this._config = config
+  }
 
   constructor(private http: HttpClient,
               private user: UserStateService) {
@@ -20,7 +23,8 @@ export class DishControllerService {
 
   getDishes(value: string, from?: string, to?: string): Observable<DishResponse[]> {
     return this.http.post<DishResponse[]>(url + 'dishes/get', {
-      customFilter: value
+      customFilter: value,
+      config: this._config
     })
   }
 
@@ -40,6 +44,7 @@ export class DishControllerService {
       duration
     })
   }
+
   getDish(id: string) {
     return this.http.get<DishResponse>(url + 'dishes/' + id)
   }
