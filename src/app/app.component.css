@@ -1,0 +1,10 @@
+.test {
+ display: grid;
+  grid-template-rows: 8fr 0.5fr;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+.wrapper {
+  overflow: auto;
+}

@@ -21,7 +21,10 @@ export interface Dish {
   price: number
   _id?: string
 }
-
+export interface InitialResponse {
+  dishes: DishResponse[],
+  count?: number
+}
 export interface DishResponse {
   title: string
   description: string

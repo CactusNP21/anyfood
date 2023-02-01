@@ -15,5 +15,12 @@
       </mat-action-row>
     </app-dish-brief>
   </ng-container>
+  <mat-paginator
+    [pageSizeOptions]="[1, 2, 3, 4]"
+    [pageSize]="1"
+    [length]="count"
+    (page)="pageEvent($event)"
+  >
 
+  </mat-paginator>
 </div>

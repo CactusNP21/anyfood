@@ -15,6 +15,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
 import {FormsModule} from "@angular/forms";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 
 @NgModule({
@@ -35,9 +36,10 @@ import {FormsModule} from "@angular/forms";
         MatDialogModule,
         MatChipsModule,
         FormsModule,
+        MatPaginatorModule,
     ],
   providers: [
-    InitDishesResolver
+    InitDishesResolver,
   ]
 })
 export class DiscoverModule { }

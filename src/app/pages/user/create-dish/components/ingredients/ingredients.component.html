@@ -22,7 +22,7 @@
   <ng-container matColumnDef="unit">
     <th mat-header-cell *matHeaderCellDef>Кількість</th>
     <td mat-cell *matCellDef="let element" appStopPropagation class="test">
-      <div class="test1"><input type="number" #i placeholder="0" (change)="element.quantity =i.value" [min]="0">
+      <div class="test1"><input type="number" #i [value]="element.quantity" placeholder="0" (change)="element.quantity =i.value" [min]="0">
         <span>{{element.unit}}</span></div>
     </td>
   </ng-container>

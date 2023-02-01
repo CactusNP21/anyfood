@@ -69,5 +69,6 @@ export class IngredientsComponent {
 
   deleteIngredients() {
     this.ingredients = this.ingredients.filter(value => value.name !== this.lastClicked)
+    this.dishState.setIngredients(this.ingredients)
   }
 }

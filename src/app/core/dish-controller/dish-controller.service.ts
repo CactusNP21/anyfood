@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Dish, DishResponse} from "../../models/dish";
+import {Dish, DishResponse, InitialResponse} from "../../models/dish";
 import {searchConfig, url} from "../constants";
-import { Observable} from "rxjs";
+import {mergeMap, Observable, switchMap} from "rxjs";
 import {UserStateService} from "../user-state/user-state.service";
 import {SearchConfig} from "../../models/search-config";
 
@@ -17,14 +17,23 @@ export class DishControllerService {
     this._config = config
   }
 
+  get config(): SearchConfig {
+    return this._config
+  }
+
   constructor(private http: HttpClient,
               private user: UserStateService) {
   }
 
-  getDishes(value: string, from?: string, to?: string): Observable<DishResponse[]> {
-    return this.http.post<DishResponse[]>(url + 'dishes/get', {
+  getDishes<T>(value: string, from?: number, to?: number, initial?: boolean):
+    Observable<T>
+  {
+    return this.http.post<T>(url + 'dishes/get', {
       customFilter: value,
-      config: this._config
+      initial,
+      config: this._config,
+      limit: to,
+      skip: from
     })
   }
 

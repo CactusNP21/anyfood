@@ -1,9 +1,9 @@
 <h2 mat-dialog-title>Фільтр</h2>
 <div mat-dialog-content>
   <h3>Ціна: <span class="value">{{minVal.value}} - {{maxVal.value}} ₴</span></h3>
-  <mat-slider [min]="config.minVal"
-              [max]="config.maxVal"
-              [step]="config.minVal"
+  <mat-slider [min]="initialConfig.minVal"
+              [max]="initialConfig.maxVal"
+              [step]="initialConfig.minVal"
               discrete
   >
     <input #minVal [value]="config.minVal" matSliderStartThumb>
@@ -11,9 +11,9 @@
   </mat-slider>
 
   <h3>Час приготування: <span class="dur">{{minDur.value}} - {{maxDur.value}} (хв)</span></h3>
-  <mat-slider [min]="config.minDur"
-              [max]="config.maxDur"
-              [step]="config.minDur"
+  <mat-slider [min]="initialConfig.minDur"
+              [max]="initialConfig.maxDur"
+              [step]="initialConfig.minDur"
               discrete
   >
     <input #minDur [value]="config.minDur" matSliderStartThumb>

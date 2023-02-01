@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatChipInputEvent} from "@angular/material/chips";
-import {SPACE} from "@angular/cdk/keycodes";
+import {ENTER, SPACE} from "@angular/cdk/keycodes";
 import {NewDishStateService} from "../../service/new-dish-state.service";
 import {DishInfo} from "../../../../../models/dish";
 import {MatDialog} from "@angular/material/dialog";
@@ -31,7 +31,7 @@ export class InformationComponent {
     topics: [this.topics]
   })
   add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+    const value = (event.value || '').trim().toLowerCase();
 
     // Add our fruit
     if (value) {
@@ -50,12 +50,12 @@ export class InformationComponent {
   }
   log() {
     this.info.controls.topics.setValue(this.topics)
-    this.info.value.title?.toLowerCase()
+    this.info.value.title?.toLowerCase().charAt(0).toUpperCase()
     console.log(this.info.value)
     this.dish.setMainInfo(<DishInfo>this.info.value)
     this.dialog.open(PreviewDialogComponent, {
       minWidth: '95vw'
     })
   }
-  readonly separatorKeysCodes = [SPACE] as const;
+  readonly separatorKeysCodes = [SPACE, ENTER] as const;
 }
