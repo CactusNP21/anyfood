@@ -17,27 +17,26 @@ import {MatChipsModule} from "@angular/material/chips";
 import {FormsModule} from "@angular/forms";
 import {MatPaginatorModule} from "@angular/material/paginator";
 
-
 @NgModule({
   declarations: [
     DiscoverComponent,
     SearchComponent,
     FilterDialogComponent
   ],
-    imports: [
-        CommonModule,
-        DiscoverRoutingModule,
-        MatInputModule,
-        MatIconModule,
-        MatExpansionModule,
-        DishBriefModule,
-        MatButtonModule,
-        MatSliderModule,
-        MatDialogModule,
-        MatChipsModule,
-        FormsModule,
-        MatPaginatorModule,
-    ],
+  imports: [
+    CommonModule,
+    DiscoverRoutingModule,
+    MatInputModule,
+    MatIconModule,
+    MatExpansionModule,
+    DishBriefModule,
+    MatButtonModule,
+    MatSliderModule,
+    MatDialogModule,
+    MatChipsModule,
+    FormsModule,
+    MatPaginatorModule,
+  ],
   providers: [
     InitDishesResolver,
   ]

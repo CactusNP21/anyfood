@@ -25,7 +25,7 @@ export class InitDishesResolver implements Resolve<InitialResponse> {
 
       of(this.dishesStateService.state) :
 
-      this.dcs.getDishes<InitialResponse>('', 0, 5, true).pipe(
+      this.dcs.getDishes<InitialResponse>('', 0, 0, true).pipe(
         catchError(err => of(this.inCaseOfError)
       ))
   }

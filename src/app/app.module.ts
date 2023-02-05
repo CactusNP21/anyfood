@@ -12,20 +12,21 @@ import {SpinnerInterceptor} from "./core/interceptors/spinner.interceptor";
 import {SpinnerOverlayModule} from "./feature/spinner-overlay/spinner-overlay.module";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    RouterOutlet,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    NavigationModule,
-    HttpClientModule,
-    SpinnerOverlayModule
-  ],
+    imports: [
+        BrowserModule,
+        RouterOutlet,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        NavigationModule,
+        HttpClientModule,
+        SpinnerOverlayModule,
+    ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}],
   exports: [],

@@ -1,5 +1,5 @@
 mat-form-field {
-padding-top: 3vh;
+  padding-top: 3vh;
   width: 93vw;
   text-align: center;
 
@@ -10,10 +10,19 @@ padding-top: 3vh;
   align-items: center;
   justify-content: center;
   flex-flow: column wrap;
-  padding-bottom: 3vh;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  background: #ffffff;
 }
 
 .f-btn {
   background-color: #8cc8ff !important;
   color: #052713 !important;
+}
+
+.hidden {
+  transform: translateY(-160px);
+  transition: .3s;
 }

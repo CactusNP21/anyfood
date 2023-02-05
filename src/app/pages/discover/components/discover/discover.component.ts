@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component, ElementRef,
+  OnDestroy,
+  OnInit, ViewChild
+} from '@angular/core';
 import {DishControllerService} from "../../../../core/dish-controller/dish-controller.service";
 import {Dish, DishResponse, InitialResponse} from "../../../../models/dish";
 import {ActivatedRoute} from "@angular/router";
@@ -25,7 +32,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   constructor(private dc: DishControllerService,
               private cdr: ChangeDetectorRef,
               private route: ActivatedRoute,
-              private dishesStateService: DishesStateService
+              private dishesStateService: DishesStateService,
   ) {
   }
 
@@ -58,11 +65,51 @@ export class DiscoverComponent implements OnInit, OnDestroy {
 
   pageEvent(e: PageEvent) {
     const {pageSize, previousPageIndex, length, pageIndex} = e
+    if (e === this.paginatorSettings) {
+      return
+    }
+    this.paginatorSettings = e
     this.dc.getDishes<DishResponse[]>(this.lastValue, pageSize * pageIndex, pageSize)
       .subscribe(value => {
         this.dishes = value
         this.cdr.markForCheck()
       })
+  }
+
+  lastPosition = 0
+  s = {
+    'top': `${0}px`,
+    cp: 0,
+    set newTop(position: number) {
+      console.log(position)
+      if (position > 170) {
+        return
+      }
+      if (position < 0) {
+        this.cp = 0
+        this.top = `-${0}px`
+        return
+      }
+      this.top = `-${position}px`
+      this.cp = position
+    }
+  }
+
+  test(e: Event) {
+    const container = e.target as HTMLElement
+    if (this.lastPosition > container.scrollTop) {
+      this.s.newTop =  this.s.cp - (this.lastPosition - container.scrollTop)
+      console.log(this.s)
+    } else {
+      this.s.newTop = this.s.cp + (container.scrollTop - this.lastPosition)
+      console.log(this.s)
+    }
+    // console.log(this.testV, container.scrollTop)
+    // if (this.testV > container.scrollTop) {
+    //   this.s.top = '0'
+    // }
+    this.lastPosition = container.scrollTop
+    // this.s.top = `-${container.scrollTop}px`
   }
 
 }

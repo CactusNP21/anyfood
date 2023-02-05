@@ -1,23 +1,27 @@
-<div class="view">
-  <app-search (search)="search($event)"></app-search>
 
-  <ng-container *ngFor="let dish of dishes">
-    <app-dish-brief [dish]="dish">
-      <mat-action-row>
-        <button mat-raised-button color="primary"
-                [routerLink]="['/dish']"
-                [queryParams]="{number: dish._id}">
-          Детальніше
-        </button>
-        <button mat-icon-button>
-          <mat-icon>add</mat-icon>
-        </button>
-      </mat-action-row>
-    </app-dish-brief>
-  </ng-container>
+<div class="view" (scroll)="test($event)">
+
+  <app-search (search)="search($event)" [ngStyle]="s"></app-search>
+  <div class="test">
+    <ng-container *ngFor="let dish of dishes">
+      <app-dish-brief [dish]="dish">
+        <mat-action-row>
+          <button mat-raised-button color="primary"
+                  [routerLink]="['/dish']"
+                  [queryParams]="{number: dish._id}">
+            Детальніше
+          </button>
+          <button mat-icon-button>
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-action-row>
+      </app-dish-brief>
+    </ng-container>
+  </div>
+
   <mat-paginator
-    [pageSizeOptions]="[1, 2, 3, 4]"
-    [pageSize]="1"
+    [pageSizeOptions]="[1, 2, 3, 4, 5]"
+    [pageSize]="5"
     [length]="count"
     (page)="pageEvent($event)"
   >
