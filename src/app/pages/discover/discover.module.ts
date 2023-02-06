@@ -15,7 +15,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
 import {FormsModule} from "@angular/forms";
-import {MatPaginatorModule} from "@angular/material/paginator";
+import {InfiniteScrollModule} from "ngx-infinite-scroll";
 
 @NgModule({
   declarations: [
@@ -23,20 +23,20 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     SearchComponent,
     FilterDialogComponent
   ],
-  imports: [
-    CommonModule,
-    DiscoverRoutingModule,
-    MatInputModule,
-    MatIconModule,
-    MatExpansionModule,
-    DishBriefModule,
-    MatButtonModule,
-    MatSliderModule,
-    MatDialogModule,
-    MatChipsModule,
-    FormsModule,
-    MatPaginatorModule,
-  ],
+    imports: [
+        CommonModule,
+        DiscoverRoutingModule,
+        MatInputModule,
+        MatIconModule,
+        MatExpansionModule,
+        DishBriefModule,
+        MatButtonModule,
+        MatSliderModule,
+        MatDialogModule,
+        MatChipsModule,
+        FormsModule,
+        InfiniteScrollModule,
+    ],
   providers: [
     InitDishesResolver,
   ]

@@ -1,8 +1,16 @@
 
-<div class="view" (scroll)="test($event)">
+<div class="view"
+     infinite-scroll
+     [infiniteScrollDistance]="0.5"
+     [infiniteScrollThrottle]="150"
+     [scrollWindow]="false"
+     (scrolled)="test2()"
+     (scroll)="test($event)">
 
   <app-search (search)="search($event)" [ngStyle]="s"></app-search>
-  <div class="test">
+  <div class="test"
+
+  >
     <ng-container *ngFor="let dish of dishes">
       <app-dish-brief [dish]="dish">
         <mat-action-row>
@@ -18,13 +26,5 @@
       </app-dish-brief>
     </ng-container>
   </div>
-
-  <mat-paginator
-    [pageSizeOptions]="[1, 2, 3, 4, 5]"
-    [pageSize]="5"
-    [length]="count"
-    (page)="pageEvent($event)"
-  >
-
-  </mat-paginator>
+  <button mat-raised-button color="primary" (click)="loadMore()" *ngIf="!hideBtn">Завантажити ще</button>
 </div>

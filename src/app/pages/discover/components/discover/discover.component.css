@@ -35,4 +35,8 @@ mat-action-row {
   align-content: center;
   justify-content: flex-start;
   padding-top: 170px;
+  padding-bottom: 1vh;
+}
+.test > :last-child{
+  padding-bottom: 2vh;
 }
