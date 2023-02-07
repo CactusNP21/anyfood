@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
@@ -21,25 +20,49 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   dishes: DishResponse[] = []
   count: number = 0
   lastValue: string
-  lastNumberOfDoc: number = 0
-  constructor(private dc: DishControllerService,
-              private cdr: ChangeDetectorRef,
+  lastNumberOfDoc: number = 5
+  lastPosition: number = 0
+  hideBtn = false
+  positionConfigStyle = {
+    'top': '0',
+    currentPosition: 0,
+    maxHeight: 0,
+    set position(position: number) {
+      if (position > this.maxHeight) {
+        this.currentPosition = this.maxHeight
+        this.top = `-${this.maxHeight}px`
+        return
+      }
+      if (position < 0) {
+        this.currentPosition = 0
+        this.top = `-${0}px`
+        return
+      }
+      this.top = `-${position}px`
+      this.currentPosition = position
+    }
+  }
+  paddingStyle = {
+    'padding-top': '0'
+  }
+  constructor(private dishControllerService: DishControllerService,
               private route: ActivatedRoute,
               private dishesStateService: DishesStateService,
-  ) {}
+  ) {
+  }
   ngOnInit() {
     const {dishes, count} = this.route.snapshot.data["dishes"]
     this.dishes = dishes
     this.count = count
-    this.dishesStateService.state = this.route.snapshot.data["dishes"]
-    this.test2()
+    this.checkMaxCount()
   }
   ngOnDestroy() {
     this.dishesStateService.state = {dishes: this.dishes, count: this.count}
   }
-  search(value: string, from: number) {
+  searchDishes(value: string, from: number) {
     this.lastValue = value
-    this.dc.getDishes<InitialResponse>(value, from, maxNewDocuments, true)
+    this.dishControllerService
+      .getDishes<InitialResponse>(value, from, maxNewDocuments, true)
       .subscribe(value => {
         const {dishes, count} = value
         this.dishes = [...this.dishes, ...dishes]
@@ -49,62 +72,33 @@ export class DiscoverComponent implements OnInit, OnDestroy {
         } else {
           this.count = 0
         }
-        this.cdr.markForCheck()
       })
   }
-  lastPosition = 0
-  s = {
-    'top': '0',
-    cp: 0,
-    maxHeight: 0,
-    set newTop(position: number) {
-      if (position > this.maxHeight) {
-        this.cp = this.maxHeight
-        this.top = `-${this.maxHeight}px`
-        return
-      }
-      if (position < 0) {
-        this.cp = 0
-        this.top = `-${0}px`
-        return
-      }
-      this.top = `-${position}px`
-      this.cp = position
-    }
-  }
-  padding = {
-    'padding-top': '0'
-  }
-  test(e: Event) {
+  slideHandle(e: Event) {
     const container = e.target as HTMLElement
     if (this.lastPosition > container.scrollTop) {
-      this.s.newTop =  this.s.cp - (this.lastPosition - container.scrollTop)
+      this.positionConfigStyle.position = this.positionConfigStyle.currentPosition - (this.lastPosition - container.scrollTop)
     } else {
-      this.s.newTop = this.s.cp + (container.scrollTop - this.lastPosition)
+      this.positionConfigStyle.position = this.positionConfigStyle.currentPosition + (container.scrollTop - this.lastPosition)
     }
     this.lastPosition = container.scrollTop
   }
-  loadMore() {
-    this.test2()
+  setSearchbarHeight(height: number) {
+    this.positionConfigStyle.maxHeight = height
+    this.paddingStyle["padding-top"] = `${height + 5}px`
   }
-  test3(height: number) {
-    console.log(height)
-    this.s.maxHeight = height
-    this.padding["padding-top"] = `${height + 5}px`
-  }
-  hideBtn = false
   checkMaxCount(): boolean {
-    if (this.count <= this.dishes.length){
+    if (this.count <= this.dishes.length) {
       this.hideBtn = true
       return true
     }
     return false
   }
-  test2() {
+  loadMore() {
     if (this.checkMaxCount()) {
       return
     }
     this.lastNumberOfDoc += 1
-    this.search(this.lastValue, this.lastNumberOfDoc)
+    this.searchDishes(this.lastValue, this.lastNumberOfDoc)
   }
 }

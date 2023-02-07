@@ -1,14 +1,17 @@
-
 <div class="view"
      infinite-scroll
      [infiniteScrollDistance]="0.5"
      [infiniteScrollThrottle]="150"
      [scrollWindow]="false"
-     (scrolled)="test2()"
-     (scroll)="test($event)">
+     (scrolled)="loadMore()"
+     (scroll)="slideHandle($event)">
 
-  <app-search (search)="search($event, 0)" (height)="test3($event)" [ngStyle]="s"></app-search>
-  <div class="test" [ngStyle]="padding">
+  <app-search (search)="searchDishes($event, 0)"
+              (height)="setSearchbarHeight($event)"
+              [ngStyle]="positionConfigStyle"
+  ></app-search>
+
+  <div class="test" [ngStyle]="paddingStyle">
     <ng-container *ngFor="let dish of dishes">
       <app-dish-brief [dish]="dish">
         <mat-action-row>
