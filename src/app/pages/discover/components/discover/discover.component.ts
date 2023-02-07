@@ -9,6 +9,7 @@ import {DishControllerService} from "../../../../core/dish-controller/dish-contr
 import {DishResponse, InitialResponse} from "../../../../models/dish";
 import {ActivatedRoute} from "@angular/router";
 import {DishesStateService} from "../../../../core/dishes-state/dishes-state.service";
+import {maxNewDocuments} from "../../../../core/constants";
 
 @Component({
   selector: 'app-discover',
@@ -19,8 +20,8 @@ import {DishesStateService} from "../../../../core/dishes-state/dishes-state.ser
 export class DiscoverComponent implements OnInit, OnDestroy {
   dishes: DishResponse[] = []
   count: number = 0
-  limit = 40
   lastValue: string
+  lastNumberOfDoc: number = 0
   constructor(private dc: DishControllerService,
               private cdr: ChangeDetectorRef,
               private route: ActivatedRoute,
@@ -31,18 +32,20 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     this.dishes = dishes
     this.count = count
     this.dishesStateService.state = this.route.snapshot.data["dishes"]
+    this.test2()
   }
   ngOnDestroy() {
     this.dishesStateService.state = {dishes: this.dishes, count: this.count}
   }
-  search(value: string) {
+  search(value: string, from: number) {
     this.lastValue = value
-    this.dc.getDishes<InitialResponse>(value, 0, 5, true)
+    this.dc.getDishes<InitialResponse>(value, from, maxNewDocuments, true)
       .subscribe(value => {
         const {dishes, count} = value
-        this.dishes = dishes
+        this.dishes = [...this.dishes, ...dishes]
         if (count) {
           this.count = count
+          this.checkMaxCount()
         } else {
           this.count = 0
         }
@@ -51,10 +54,13 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   }
   lastPosition = 0
   s = {
-    'top': `${0}px`,
+    'top': '0',
     cp: 0,
+    maxHeight: 0,
     set newTop(position: number) {
-      if (position > 170) {
+      if (position > this.maxHeight) {
+        this.cp = this.maxHeight
+        this.top = `-${this.maxHeight}px`
         return
       }
       if (position < 0) {
@@ -66,7 +72,9 @@ export class DiscoverComponent implements OnInit, OnDestroy {
       this.cp = position
     }
   }
-
+  padding = {
+    'padding-top': '0'
+  }
   test(e: Event) {
     const container = e.target as HTMLElement
     if (this.lastPosition > container.scrollTop) {
@@ -79,96 +87,24 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   loadMore() {
     this.test2()
   }
+  test3(height: number) {
+    console.log(height)
+    this.s.maxHeight = height
+    this.padding["padding-top"] = `${height + 5}px`
+  }
   hideBtn = false
-  test2() {
-    if (this.count * 3 <= this.dishes.length){
+  checkMaxCount(): boolean {
+    if (this.count <= this.dishes.length){
       this.hideBtn = true
+      return true
+    }
+    return false
+  }
+  test2() {
+    if (this.checkMaxCount()) {
       return
     }
-    console.log('scrolled')
-    this.dishes.push({
-      _id: '6',
-      url: '/',
-      servings: 3,
-      description: 'TESTSSSSS',
-      duration: 25,
-      ingredients: [{price: 20, unit: 'hh', quantity: 5, name: 'ddd', mainImg: 'f'}],
-      price: 256,
-      steps: [{description: 'test',title: 'test1'}],
-      title: 'TEST DDD',
-      topics: ['test']
-    })
-    this.dishes.push({
-      _id: '6',
-      url: '/',
-      servings: 3,
-      description: 'TESTSSSSS',
-      duration: 25,
-      ingredients: [{price: 20, unit: 'hh', quantity: 5, name: 'ddd', mainImg: 'f'}],
-      price: 256,
-      steps: [{description: 'test',title: 'test1'}],
-      title: 'TEST DDD',
-      topics: ['test']
-    })
-    this.dishes.push({
-      _id: '6',
-      url: '/',
-      servings: 3,
-      description: 'TESTSSSSS',
-      duration: 25,
-      ingredients: [{price: 20, unit: 'hh', quantity: 5, name: 'ddd', mainImg: 'f'}],
-      price: 256,
-      steps: [{description: 'test',title: 'test1'}],
-      title: 'TEST DDD',
-      topics: ['test']
-    })
-    this.dishes.push({
-      _id: '6',
-      url: '/',
-      servings: 3,
-      description: 'TESTSSSSS',
-      duration: 25,
-      ingredients: [{price: 20, unit: 'hh', quantity: 5, name: 'ddd', mainImg: 'f'}],
-      price: 256,
-      steps: [{description: 'test',title: 'test1'}],
-      title: 'TEST DDD',
-      topics: ['test']
-    })
-    this.dishes.push({
-      _id: '6',
-      url: '/',
-      servings: 3,
-      description: 'TESTSSSSS',
-      duration: 25,
-      ingredients: [{price: 20, unit: 'hh', quantity: 5, name: 'ddd', mainImg: 'f'}],
-      price: 256,
-      steps: [{description: 'test',title: 'test1'}],
-      title: 'TEST DDD',
-      topics: ['test']
-    })
-    this.dishes.push({
-      _id: '6',
-      url: '/',
-      servings: 3,
-      description: 'TESTSSSSS',
-      duration: 25,
-      ingredients: [{price: 20, unit: 'hh', quantity: 5, name: 'ddd', mainImg: 'f'}],
-      price: 256,
-      steps: [{description: 'test',title: 'test1'}],
-      title: 'TEST DDD',
-      topics: ['test']
-    })
-    this.dishes.push({
-      _id: '6',
-      url: '/',
-      servings: 3,
-      description: 'TESTSSSSS',
-      duration: 25,
-      ingredients: [{price: 20, unit: 'hh', quantity: 5, name: 'ddd', mainImg: 'f'}],
-      price: 256,
-      steps: [{description: 'test',title: 'test1'}],
-      title: 'TEST DDD',
-      topics: ['test']
-    })
+    this.lastNumberOfDoc += 1
+    this.search(this.lastValue, this.lastNumberOfDoc)
   }
 }

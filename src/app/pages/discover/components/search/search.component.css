@@ -1,5 +1,4 @@
 mat-form-field {
-  padding-top: 3vh;
   width: 93vw;
   text-align: center;
 
@@ -15,14 +14,11 @@ mat-form-field {
   left: 0;
   right: 0;
   background: #ffffff;
+  padding: 1vh 0;
+  border-bottom: 1px solid #3f51b5;
 }
 
 .f-btn {
   background-color: #8cc8ff !important;
   color: #052713 !important;
-}
-
-.hidden {
-  transform: translateY(-160px);
-  transition: .3s;
 }

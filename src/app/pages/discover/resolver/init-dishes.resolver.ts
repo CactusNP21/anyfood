@@ -9,6 +9,7 @@ import {DishControllerService} from "../../../core/dish-controller/dish-controll
 import {DishResponse, InitialResponse} from "../../../models/dish";
 import {DishesStateService} from "../../../core/dishes-state/dishes-state.service";
 import {initial} from "lodash-es";
+import {maxNewDocuments} from "../../../core/constants";
 
 
 @Injectable({
@@ -25,7 +26,7 @@ export class InitDishesResolver implements Resolve<InitialResponse> {
 
       of(this.dishesStateService.state) :
 
-      this.dcs.getDishes<InitialResponse>('', 0, 0, true).pipe(
+      this.dcs.getDishes<InitialResponse>('', 0, maxNewDocuments, true).pipe(
         catchError(err => of(this.inCaseOfError)
       ))
   }

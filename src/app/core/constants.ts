@@ -9,3 +9,4 @@ export const searchConfig: SearchConfig = {
   maxDur: 210,
   topics: []
 }
+export const maxNewDocuments = 5

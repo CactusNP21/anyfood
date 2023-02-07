@@ -21,16 +21,14 @@ import {DishControllerService} from "../../../../core/dish-controller/dish-contr
 export class SearchComponent implements AfterViewInit{
   @ViewChild('sb') searchBar: ElementRef
   @Output() search = new EventEmitter<string>()
-
+  @Output() height = new EventEmitter<number>()
 
   constructor(private dialog: MatDialog,
               private dcs: DishControllerService,
               private cdr: ChangeDetectorRef) {
   }
-  height: number
-  hidden = false
   ngAfterViewInit() {
-    this.height = this.searchBar.nativeElement.offsetHeight
+    this.height.emit(this.searchBar.nativeElement.offsetHeight)
   }
 
   request(val: string) {

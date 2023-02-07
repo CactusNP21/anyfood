@@ -7,10 +7,8 @@
      (scrolled)="test2()"
      (scroll)="test($event)">
 
-  <app-search (search)="search($event)" [ngStyle]="s"></app-search>
-  <div class="test"
-
-  >
+  <app-search (search)="search($event, 0)" (height)="test3($event)" [ngStyle]="s"></app-search>
+  <div class="test" [ngStyle]="padding">
     <ng-container *ngFor="let dish of dishes">
       <app-dish-brief [dish]="dish">
         <mat-action-row>
