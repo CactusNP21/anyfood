@@ -27,8 +27,10 @@ import {SpinnerOverlayModule} from "./feature/spinner-overlay/spinner-overlay.mo
         HttpClientModule,
         SpinnerOverlayModule,
     ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true}
+  ],
   exports: [],
   bootstrap: [AppComponent]
 })
