@@ -16,6 +16,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
 import {FormsModule} from "@angular/forms";
 import {InfiniteScrollModule} from "ngx-infinite-scroll";
+import {MatRippleModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import {InfiniteScrollModule} from "ngx-infinite-scroll";
         MatChipsModule,
         FormsModule,
         InfiniteScrollModule,
+        MatRippleModule,
     ],
   providers: [
     InitDishesResolver,

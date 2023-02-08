@@ -23,7 +23,7 @@ export interface Dish {
 }
 export interface InitialResponse {
   dishes: DishResponse[],
-  count?: number
+  count: number
 }
 export interface DishResponse {
   title: string

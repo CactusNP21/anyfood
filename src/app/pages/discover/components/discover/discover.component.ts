@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy,
+  ChangeDetectionStrategy, ChangeDetectorRef,
   Component,
   OnDestroy,
   OnInit,
@@ -45,60 +45,79 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   paddingStyle = {
     'padding-top': '0'
   }
+
   constructor(private dishControllerService: DishControllerService,
               private route: ActivatedRoute,
               private dishesStateService: DishesStateService,
+              private cdr: ChangeDetectorRef
   ) {
   }
+
   ngOnInit() {
     const {dishes, count} = this.route.snapshot.data["dishes"]
     this.dishes = dishes
     this.count = count
     this.checkMaxCount()
   }
+
   ngOnDestroy() {
     this.dishesStateService.state = {dishes: this.dishes, count: this.count}
   }
-  searchDishes(value: string, from: number) {
+
+  searchDishes(value: string, from: number, initial: boolean) {
     this.lastValue = value
     this.dishControllerService
-      .getDishes<InitialResponse>(value, from, maxNewDocuments, true)
+      .getDishes<InitialResponse>(value, from, maxNewDocuments, initial)
       .subscribe(value => {
+        this.lastNumberOfDoc = 5
         const {dishes, count} = value
-        this.dishes = [...this.dishes, ...dishes]
-        if (count) {
-          this.count = count
-          this.checkMaxCount()
-        } else {
-          this.count = 0
-        }
+        this.dishes = dishes
+        this.count = count
+        this.checkMaxCount()
+        this.cdr.markForCheck()
       })
   }
+
   slideHandle(e: Event) {
     const container = e.target as HTMLElement
     if (this.lastPosition > container.scrollTop) {
-      this.positionConfigStyle.position = this.positionConfigStyle.currentPosition - (this.lastPosition - container.scrollTop)
+      this.positionConfigStyle.position =
+        this.positionConfigStyle.currentPosition -
+        (this.lastPosition - container.scrollTop)
     } else {
-      this.positionConfigStyle.position = this.positionConfigStyle.currentPosition + (container.scrollTop - this.lastPosition)
+      this.positionConfigStyle.position =
+        this.positionConfigStyle.currentPosition +
+        (container.scrollTop - this.lastPosition)
     }
     this.lastPosition = container.scrollTop
   }
+
   setSearchbarHeight(height: number) {
     this.positionConfigStyle.maxHeight = height
     this.paddingStyle["padding-top"] = `${height + 5}px`
   }
+
   checkMaxCount(): boolean {
+    console.log(this.dishes.length)
     if (this.count <= this.dishes.length) {
       this.hideBtn = true
       return true
     }
+    this.hideBtn = false
     return false
   }
+
   loadMore() {
     if (this.checkMaxCount()) {
       return
     }
-    this.lastNumberOfDoc += 1
-    this.searchDishes(this.lastValue, this.lastNumberOfDoc)
+    this.dishControllerService
+      .getDishes<DishResponse[]>(this.lastValue, this.lastNumberOfDoc, maxNewDocuments, false)
+      .subscribe(dishes => {
+        this.dishes = [...this.dishes, ...dishes]
+        this.checkMaxCount()
+        this.cdr.markForCheck()
+        this.lastNumberOfDoc += 5
+      })
   }
 }

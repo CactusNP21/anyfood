@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Dish, DishResponse, InitialResponse} from "../../models/dish";
-import {searchConfig, url} from "../constants";
-import {mergeMap, Observable, switchMap} from "rxjs";
+import {Dish, DishResponse} from "../../models/dish";
+import {initialSearchConfig, url} from "../constants";
+import {Observable} from "rxjs";
 import {UserStateService} from "../user-state/user-state.service";
 import {SearchConfig} from "../../models/search-config";
 
@@ -11,7 +11,7 @@ import {SearchConfig} from "../../models/search-config";
 })
 export class DishControllerService {
 
-  private _config: SearchConfig = searchConfig
+  private _config: SearchConfig = initialSearchConfig
 
   set config(config: SearchConfig) {
     this._config = config

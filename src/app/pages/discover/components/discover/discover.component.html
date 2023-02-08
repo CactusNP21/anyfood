@@ -6,7 +6,7 @@
      (scrolled)="loadMore()"
      (scroll)="slideHandle($event)">
 
-  <app-search (search)="searchDishes($event, 0)"
+  <app-search (search)="searchDishes($event, 0, true)"
               (height)="setSearchbarHeight($event)"
               [ngStyle]="positionConfigStyle"
   ></app-search>
