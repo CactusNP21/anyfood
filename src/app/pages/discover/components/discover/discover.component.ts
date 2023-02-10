@@ -9,6 +9,7 @@ import {DishResponse, InitialResponse} from "../../../../models/dish";
 import {ActivatedRoute} from "@angular/router";
 import {DishesStateService} from "../../../../core/dishes-state/dishes-state.service";
 import {maxNewDocuments} from "../../../../core/constants";
+import {cloneDeep} from "lodash-es";
 
 @Component({
   selector: 'app-discover',
@@ -65,7 +66,7 @@ export class DiscoverComponent implements OnInit, OnDestroy {
   }
 
   save(dish: DishResponse) {
-    this.dishesStateService.save(dish)
+    this.dishesStateService.save(cloneDeep(dish))
     console.log('22')
   }
 

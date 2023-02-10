@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {DishResponse} from "../../../models/dish";
+import {cloneDeep} from "lodash-es";
 
 @Component({
   selector: 'app-dish-detailed',
@@ -12,27 +13,27 @@ export class DishDetailedComponent implements OnInit{
   @Output() servUpdate = new EventEmitter<DishResponse>()
   servings = {
     count: 1,
-    dishRef: this.dish,
+    dishClone: this.dish,
     emitter: this.servUpdate,
     add: function () {
       this.count += 1
-      console.log(this.dishRef)
-      this.dishRef.servings = this.count
-      this.emitter.emit(this.dishRef)
+      console.log(this.dishClone)
+      this.dishClone.servings = this.count
+      this.emitter.emit(this.dishClone)
       return
     },
     subtract: function () {
       if (this.count > 1) {
         this.count -= 1
-        this.dishRef.servings = this.count
-        this.emitter.emit(this.dishRef)
+        this.dishClone.servings = this.count
+        this.emitter.emit(this.dishClone)
       }
       return
     }
   }
   ngOnInit() {
     this.servings.count = this.dish.servings
-    this.servings.dishRef = this.dish
+    this.servings.dishClone = cloneDeep(this.dish)
   }
 
 }

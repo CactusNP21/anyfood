@@ -1,0 +1,19 @@
+<h1 *ngIf="empty">
+  Ви ще нічого не додали :(
+</h1>
+
+<mat-accordion multi class="saved">
+  <ng-container *ngFor="let value of saved">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <p>{{value.title}}</p>
+      </mat-expansion-panel-header>
+      <ng-template matExpansionPanelContent>
+        <app-dish-detailed [dish]="value" (servUpdate)="updateSavedDish($event)">
+        </app-dish-detailed>
+      </ng-template>
+    </mat-expansion-panel>
+
+  </ng-container>
+</mat-accordion>
+
