@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoggedGuard} from "./pages/user/guard/logged.guard";
 import {AdminGuard} from "./pages/admin/guard/admin.guard";
+import * as path from "path";
 
 const routes: Routes = [
   {path: '', pathMatch: "full", redirectTo: 'discover'},
@@ -27,6 +28,14 @@ const routes: Routes = [
     path: 'dish',
     loadChildren: () => import('./pages/dish/dish.module').then(m => m.DishModule),
   },
+  {
+    path: 'saved',
+    loadChildren: () => import('./pages/saved/saved.module').then(m => m.SavedModule),
+  },
+  {
+    path: 'shop-list',
+    loadChildren: () => import('./pages/shop-list/shop-list.module').then(m => m.ShopListModule)
+  }
 ];
 
 @NgModule({

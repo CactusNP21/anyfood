@@ -10,11 +10,11 @@
       <div class="servings">
         <h2>Порцій:</h2>
         <mat-form-field appearance="outline" subscriptSizing="fixed">
-          <input matInput type="number" [value]="dish.servings.toString()">
-          <button matSuffix mat-icon-button (click)="dish.servings = dish.servings + 1">
+          <input matInput type="number" [value]="servings.count.toString()" [min]="1">
+          <button matSuffix mat-icon-button (click)="servings.add()">
             <mat-icon>add</mat-icon>
           </button>
-          <button matPrefix mat-icon-button (click)="dish.servings = dish.servings - 1">
+          <button matPrefix mat-icon-button (click)="servings.subtract()">
             <mat-icon>remove</mat-icon>
           </button>
         </mat-form-field>
@@ -29,15 +29,15 @@
     <mat-list-item>
       <mat-icon matListItemIcon color="primary">money</mat-icon>
       <div class="ingredient"><span
-        class="price">{{ dish.price * dish.servings | currency: "₴"}}</span>
+        class="price">{{ dish.price * servings.count | currency: "₴"}}</span>
       </div>
     </mat-list-item>
-    <mat-list>
-      <mat-list-item *ngFor="let ingredient of dish.ingredients">
+    <mat-list class="items">
+      <mat-list-item *ngFor="let ingredient of dish.ingredients" [ngStyle]="{'height': 'auto'}">
         <mat-icon matListItemIcon color="primary">horizontal_rule</mat-icon>
 
         <div class="ingredient">{{ingredient.name}}:
-          <span class="highlight">{{+ingredient.quantity * dish.servings}} {{ingredient.unit}}</span>
+          <span class="highlight">{{+ingredient.quantity * servings.count}} {{ingredient.unit}}</span>
         </div>
 
       </mat-list-item>

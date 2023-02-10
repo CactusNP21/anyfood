@@ -22,6 +22,7 @@ export class InitDishesResolver implements Resolve<InitialResponse> {
   }
   inCaseOfError: InitialResponse = {count: 0, dishes: []}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<InitialResponse> {
+
     return this.dishesStateService.state.dishes.length > 0 ?
 
       of(this.dishesStateService.state) :

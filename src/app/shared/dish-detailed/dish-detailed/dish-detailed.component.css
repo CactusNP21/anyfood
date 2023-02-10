@@ -1,14 +1,9 @@
-mat-card {
-  margin-top: 5vh;
-}
-
 mat-card-title-group {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3vh;
 }
-
 .servings {
   display: flex;
   flex-direction: column;
@@ -25,3 +20,21 @@ mat-dialog-actions {
   justify-content: space-between;
 
 }
+.ingredient{
+  white-space: pre-line;
+}
+
+.highlight {
+  color:  #1100ff;
+  white-space: pre;
+}
+.price {
+  color: #033d1d;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+

@@ -64,6 +64,11 @@ export class DiscoverComponent implements OnInit, OnDestroy {
     this.dishesStateService.state = {dishes: this.dishes, count: this.count}
   }
 
+  save(dish: DishResponse) {
+    this.dishesStateService.save(dish)
+    console.log('22')
+  }
+
   searchDishes(value: string, from: number, initial: boolean) {
     this.lastValue = value
     this.dishControllerService

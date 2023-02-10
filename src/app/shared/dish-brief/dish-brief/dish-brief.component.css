@@ -1,7 +1,6 @@
 mat-expansion-panel {
   width: 90%;
 }
-
 mat-panel-title {
   display: flex;
   align-items: center;
@@ -9,18 +8,13 @@ mat-panel-title {
   min-height: 64px;
   width: 100%;
 }
-
 mat-expansion-panel-header {
   height: auto;
 }
-
-
-
 mat-panel-description {
   margin-top: 3vh;
 
 }
-
 .des {
   display: flex;
   flex-direction: column;
