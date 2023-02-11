@@ -1,3 +1,12 @@
-<ng-container *ngFor="let el of shopList">
-  <p>{{el.name}}: {{el.quantity}} {{el.unit}}</p>
-</ng-container>
+<div>
+  <ul>
+    <li *ngFor="let el of shopList">
+      <mat-checkbox color="primary"
+                    [(ngModel)]="el.marked">
+        <span [ngClass]="el.marked ? 'marked' : ''">{{el.name}}:
+          <span [ngClass]="el.marked ? '' : 'highlight'" class="test">{{el.quantity}} {{el.unit}}</span>
+        </span>
+      </mat-checkbox>
+    </li>
+  </ul>
+</div>
