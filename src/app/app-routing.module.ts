@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LoggedGuard} from "./pages/user/guard/logged.guard";
 import {AdminGuard} from "./pages/admin/guard/admin.guard";
-import * as path from "path";
+import {DishStateResolver} from "./shared/dish-state-resolver/dish-state.resolver";
 
 const routes: Routes = [
-  {path: '', pathMatch: "full", redirectTo: 'discover'},
+  {path: '', pathMatch: "full", redirectTo: 'discover', resolve: {_ : DishStateResolver}},
   {
     path: 'auth',
     loadChildren: () => import('./pages/authentication/authentication.module').then(m => m.AuthenticationModule)
@@ -17,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'discover',
+
     loadChildren: () => import('./pages/discover/discover.module').then(m => m.DiscoverModule)
   },
   {
@@ -30,10 +31,12 @@ const routes: Routes = [
   },
   {
     path: 'saved',
+    resolve: {_ : DishStateResolver},
     loadChildren: () => import('./pages/saved/saved.module').then(m => m.SavedModule),
   },
   {
     path: 'shop-list',
+    resolve: {_ : DishStateResolver},
     loadChildren: () => import('./pages/shop-list/shop-list.module').then(m => m.ShopListModule)
   }
 ];

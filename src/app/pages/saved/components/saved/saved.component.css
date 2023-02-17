@@ -5,3 +5,11 @@
   gap: 1vh;
   flex-direction: column;
 }
+
+mat-action-row {
+  padding-bottom: 0;
+}
+
+p {
+  margin: 0;
+}

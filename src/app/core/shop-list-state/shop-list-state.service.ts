@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
 import {ShopList, Update} from "../../models/shop-list";
+import {DishResponse} from "../../models/dish";
 
 
 @Injectable({
@@ -13,11 +14,9 @@ export class ShopListStateService {
 
   constructor() {
     this._savingsSub.asObservable().subscribe(dishes => {
-      console.log(dishes)
       this.recalculate(dishes)
     })
   }
-
   get shopList() {
     return this._storage.values()
   }
@@ -25,15 +24,10 @@ export class ShopListStateService {
   async recalculate({old, updated}: Update): Promise<void> {
     if (old) {
       const difference = updated.servings -  old.servings
-      console.log(difference)
       for (const value of old.ingredients) {
         const current = this._storage.get(value.name)
-
         if (current) {
-          console.log(current.quantity)
-
           current.quantity = current.quantity + (difference * value.quantity);
-          console.log(current.quantity)
           this._storage.set(value.name, {
             name: value.name,
             quantity: current.quantity,

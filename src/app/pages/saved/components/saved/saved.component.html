@@ -1,7 +1,7 @@
 <h1 *ngIf="empty">
-  Ви ще нічого не додали :(
+  Пусто :(
 </h1>
-
+<button mat-raised-button [disabled]="!changed" (click)="saveDishes()">SAVE</button>
 <mat-accordion multi class="saved">
   <ng-container *ngFor="let value of saved">
     <mat-expansion-panel>
@@ -11,6 +11,11 @@
       <ng-template matExpansionPanelContent>
         <app-dish-detailed [dish]="value" (servUpdate)="updateSavedDish($event)">
         </app-dish-detailed>
+        <mat-action-row>
+          <button mat-raised-button color="warn" (click)="deleteDish(value)">
+            Видалити
+          </button>
+        </mat-action-row>
       </ng-template>
     </mat-expansion-panel>
 
