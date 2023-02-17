@@ -31,12 +31,10 @@ const routes: Routes = [
   },
   {
     path: 'saved',
-    resolve: {_ : DishStateResolver},
     loadChildren: () => import('./pages/saved/saved.module').then(m => m.SavedModule),
   },
   {
     path: 'shop-list',
-    resolve: {_ : DishStateResolver},
     loadChildren: () => import('./pages/shop-list/shop-list.module').then(m => m.ShopListModule)
   }
 ];
