@@ -72,6 +72,7 @@ export class NewDishStateService {
         quantity: newQuantity,
         price: newPrice,
         unit: newUnit,
+        url: info.url,
         calculated: true
       };
     });

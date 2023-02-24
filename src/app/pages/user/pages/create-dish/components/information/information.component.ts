@@ -29,7 +29,7 @@ export class InformationComponent {
     description: ['', Validators.required],
     servings: [3, Validators.required],
     duration: [30, Validators.required],
-    img: [],
+    url: [''],
     topics: [this.topics]
   })
 
@@ -56,8 +56,8 @@ export class InformationComponent {
   preview() {
     this.info.controls.topics.setValue(this.topics)
     this.info.value.title?.toLowerCase().charAt(0).toUpperCase()
-    console.log(this.info.value.servings)
     const value = this.info.value as DishInfo
+    console.log(value)
     this.dish.setMainInfo(value)
     this.dialog.open(PreviewDialogComponent, {
       minWidth: '95vw'
