@@ -22,6 +22,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Топіки</mat-label>
+    <mat-hint>Мінімум 1</mat-hint>
     <mat-chip-grid #chipGrid>
       <mat-chip-row *ngFor="let topic of topics"
                     (removed)="remove(topic)">
@@ -38,7 +39,7 @@
              (matChipInputTokenEnd)="add($event)"/>
     </mat-chip-grid>
   </mat-form-field>
-  <button mat-raised-button color="primary" [disabled]="!(info.valid && completed)"
+  <button mat-raised-button color="primary" [disabled]="!(info.valid && completed && topics.length > 0)"
           (click)="preview()"
   >Попередній огляд
   </button>

@@ -29,7 +29,7 @@ export class InformationComponent {
     description: ['', Validators.required],
     servings: [3, Validators.required],
     duration: [30, Validators.required],
-    url: [''],
+    url: ['', Validators.required],
     topics: [this.topics]
   })
 
