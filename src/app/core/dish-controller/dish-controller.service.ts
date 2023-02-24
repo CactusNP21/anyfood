@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Dish, DishResponse} from "../../models/dish";
-import {initialSearchConfig, url} from "../constants";
+import {initialSearchConfig, URL} from "../constants";
 import {Observable} from "rxjs";
 import {UserStateService} from "../user-state/user-state.service";
 import {SearchConfig} from "../../models/search-config";
@@ -28,7 +28,7 @@ export class DishControllerService {
   getDishes<T>(value: string, from?: number, to?: number, initial?: boolean):
     Observable<T>
   {
-    return this.http.post<T>(url + 'dishes/get', {
+    return this.http.post<T>(URL + 'dishes/get', {
       customFilter: value,
       initial,
       config: this._config,
@@ -38,12 +38,12 @@ export class DishControllerService {
   }
 
   addDish(dish: Dish) {
-    const {steps, ingredients, price, information} = dish
-    const {title, img, topics, duration, servings, des} = information
-    return this.http.post(url + 'dishes', {
+    const {steps, ingredients, price} = dish
+    const {title, url, topics, duration, servings, description} = dish
+    return this.http.post(URL + 'dishes', {
       title,
-      description: des,
-      url: img,
+      description,
+      url,
       price,
       topics,
       ingredients,
@@ -55,7 +55,7 @@ export class DishControllerService {
   }
 
   getDish(id: string) {
-    return this.http.get<DishResponse>(url + 'dishes/' + id)
+    return this.http.get<DishResponse>(URL + 'dishes/' + id)
   }
 
 

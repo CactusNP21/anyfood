@@ -5,7 +5,7 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Короткий опис</mat-label>
-    <textarea matInput placeholder="Салат з крабовими паличками та кукурудзою" formControlName="des"></textarea>
+    <textarea matInput placeholder="Салат з крабовими паличками та кукурудзою" formControlName="description"></textarea>
   </mat-form-field>
   <mat-form-field>
     <mat-label>Час приготування</mat-label>
@@ -39,7 +39,8 @@
     </mat-chip-grid>
   </mat-form-field>
   <button mat-raised-button color="primary" [disabled]="!(info.valid && completed)"
-    (click)="log()"
-  >Попередній огляд</button>
+          (click)="preview()"
+  >Попередній огляд
+  </button>
 </form>
 

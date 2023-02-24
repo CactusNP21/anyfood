@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {MatChipInputEvent} from "@angular/material/chips";
 import {ENTER, SPACE} from "@angular/cdk/keycodes";
 import {NewDishStateService} from "../../service/new-dish-state.service";
-import {DishInfo} from "../../../../../models/dish";
 import {MatDialog} from "@angular/material/dialog";
 import {PreviewDialogComponent} from "../preview-dialog/preview-dialog.component";
+import {DishInfo} from "../../../../../../models/dish";
 
 @Component({
   selector: 'app-information',
@@ -14,6 +14,7 @@ import {PreviewDialogComponent} from "../preview-dialog/preview-dialog.component
 })
 export class InformationComponent {
   completed = false
+
   constructor(private fb: FormBuilder,
               private dish: NewDishStateService,
               private dialog: MatDialog) {
@@ -21,15 +22,17 @@ export class InformationComponent {
       this.completed = value
     })
   }
+
   topics: string[] = []
   info = this.fb.group({
     title: ['', Validators.required],
-    des: ['', Validators.required],
+    description: ['', Validators.required],
     servings: [3, Validators.required],
     duration: [30, Validators.required],
     img: [],
     topics: [this.topics]
   })
+
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim().toLowerCase();
 
@@ -41,6 +44,7 @@ export class InformationComponent {
     // Clear the input value
     event.chipInput!.clear();
   }
+
   remove(s: string): void {
     const index = this.topics.indexOf(s);
 
@@ -48,14 +52,17 @@ export class InformationComponent {
       this.topics.splice(index, 1);
     }
   }
-  log() {
+
+  preview() {
     this.info.controls.topics.setValue(this.topics)
     this.info.value.title?.toLowerCase().charAt(0).toUpperCase()
-    console.log(this.info.value)
-    this.dish.setMainInfo(<DishInfo>this.info.value)
+    console.log(this.info.value.servings)
+    const value = this.info.value as DishInfo
+    this.dish.setMainInfo(value)
     this.dialog.open(PreviewDialogComponent, {
       minWidth: '95vw'
     })
   }
+
   readonly separatorKeysCodes = [SPACE, ENTER] as const;
 }

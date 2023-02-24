@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {BehaviorSubject, Subject} from "rxjs";
 export interface SilpoRes extends Items{
   items: Items[]
 }

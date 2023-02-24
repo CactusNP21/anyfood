@@ -40,8 +40,6 @@ export class CreateDishComponent {
   search(s: string) {
     this.silpo.searchItems(s)
   }
-
-
   log() {
     console.log(this.dish.value)
   }

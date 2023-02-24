@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '', component: UserComponent,
   },
   {
-    path: 'create-dish', loadChildren: () => import('./create-dish/create-dish.module').then(m => m.CreateDishModule)
+    path: 'create-dish', loadChildren: () => import('./pages/create-dish/create-dish.module').then(m => m.CreateDishModule)
   }
 ];
 

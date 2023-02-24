@@ -8,9 +8,11 @@ import {cloneDeep} from "lodash-es";
   styleUrls: ['./dish-detailed.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DishDetailedComponent implements OnInit{
+export class DishDetailedComponent implements OnInit {
   @Input() dish!: DishResponse
   @Output() servUpdate = new EventEmitter<DishResponse>()
+
+
   servings = {
     count: 1,
     dishClone: this.dish,
@@ -29,8 +31,14 @@ export class DishDetailedComponent implements OnInit{
         this.emitter.emit(this.dishClone)
       }
       return
+    },
+    change: function (value: number) {
+      this.count = value
+      this.dishClone.servings = this.count
+      this.emitter.emit(this.dishClone)
     }
   }
+
   ngOnInit() {
     this.servings.count = this.dish.servings
     this.servings.dishClone = cloneDeep(this.dish)

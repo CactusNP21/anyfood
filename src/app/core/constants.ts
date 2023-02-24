@@ -1,6 +1,6 @@
 import {SearchConfig} from "../models/search-config";
 
-export const url = 'https://recipe-backend-test.vercel.app/'
+export const URL = 'https://recipe-backend-test.vercel.app/'
 
 export const initialSearchConfig: SearchConfig = {
   minVal: 0,

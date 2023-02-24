@@ -14,6 +14,6 @@ export class UserComponent implements OnInit{
 
   ngOnInit() {
     this.date = new Date()
-    this.username = this.user.getUsername()
+    this.username = this.user.username
   }
 }

@@ -1,7 +1,12 @@
 <h1 *ngIf="empty">
   Пусто :(
 </h1>
-<button mat-raised-button [disabled]="!changed" (click)="saveDishes()">SAVE</button>
+
+<div class="controls">
+  <button mat-raised-button [disabled]="!changed" (click)="saveDishes()">SAVE</button>
+  <button (click)="discardChanges()" *ngIf="canDiscard" mat-raised-button color="warn">Discard</button>
+</div>
+
 <mat-accordion multi class="saved">
   <ng-container *ngFor="let value of saved">
     <mat-expansion-panel>

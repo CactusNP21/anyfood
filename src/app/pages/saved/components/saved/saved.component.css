@@ -13,3 +13,7 @@ mat-action-row {
 p {
   margin: 0;
 }
+.controls {
+  display: flex;
+  justify-content: space-between;
+}

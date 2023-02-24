@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {NewDishStateService} from "../../service/new-dish-state.service";
-import {Dish, DishInfo, Ingredients, Steps} from "../../../../../models/dish";
-import {DishControllerService} from "../../../../../core/dish-controller/dish-controller.service";
+import {Dish} from "../../../../../../models/dish";
+import {DishControllerService} from "../../../../../../core/dish-controller/dish-controller.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router} from "@angular/router";
 
@@ -18,15 +18,10 @@ export class PreviewDialogComponent implements OnInit{
               private router: Router) {
   }
 
-  dish!: Dish
-  info!: DishInfo
-  ingredients!: Ingredients
-  steps!: Steps
+  dish: Dish
   ngOnInit() {
     this.dish = this.dishState.currentDish
-    this.info = this.dish.information
-    this.ingredients = this.dish.ingredients
-    this.steps = this.dish.steps
+    console.log(this.dish)
   }
 
   postDish() {

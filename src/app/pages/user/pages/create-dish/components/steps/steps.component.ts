@@ -3,7 +3,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AddStepDialogComponent} from "./add-step-dialog/add-step-dialog.component";
 import {CdkDragDrop, moveItemInArray} from "@angular/cdk/drag-drop";
 import {NewDishStateService} from "../../service/new-dish-state.service";
-import {Steps} from "../../../../../models/dish";
+import {Steps} from "../../../../../../models/dish";
 
 
 @Component({

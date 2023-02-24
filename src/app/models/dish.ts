@@ -1,30 +1,11 @@
-export interface Dish {
-  information: {
-    title: string
-    des: string
-    img?: string
-    duration: number
-    topics?: string[]
-    servings: number
-  }
-  ingredients: {
-    name: string
-    unit: string
-    quantity: number
-    price: number
-    mainImg: string
-  }[]
-  steps: {
-    title: string
-    description: string
-  }[]
-  price: number
-  _id?: string
+export interface Dish extends DishResponse {
 }
+
 export interface InitialResponse {
   dishes: DishResponse[],
   count: number
 }
+
 export interface DishResponse {
   title: string
   description: string
@@ -38,6 +19,7 @@ export interface DishResponse {
     quantity: number
     price: number
     mainImg: string
+    calculated?: boolean
   }[]
   steps: {
     title: string
@@ -45,9 +27,8 @@ export interface DishResponse {
   }[]
   price: number
   _id: string
-
 }
 
 export type Ingredients = Pick<Dish, "ingredients">["ingredients"]
 export type Steps = Pick<Dish, "steps">['steps']
-export type DishInfo = Omit<Dish, "steps" | "ingredients">["information"]
+export type DishInfo = Omit<Dish, "steps" | "ingredients">

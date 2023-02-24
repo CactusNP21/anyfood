@@ -1,0 +1,13 @@
+<mat-dialog-content>
+  <app-dish-brief [dish]="dish">
+  </app-dish-brief>
+  <mat-divider></mat-divider>
+  <app-dish-detailed [dish]="dish">
+
+  </app-dish-detailed>
+
+<mat-dialog-actions>
+  <button mat-flat-button (click)="postDish()">Додати</button>
+  <button mat-flat-button>Закрити</button>
+</mat-dialog-actions>
+</mat-dialog-content>

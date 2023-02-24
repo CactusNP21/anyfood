@@ -1,45 +1,46 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {url} from "../../../core/constants";
-import {catchError, of} from "rxjs";
+import {URL} from "../../../core/constants";
+import {catchError, firstValueFrom, of, timeout} from "rxjs";
 import {User} from "../../../models/user";
+import {UserStateService} from "../../../core/user-state/user-state.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private userState: UserStateService) {
   }
-
+  async quickLogin(): Promise<void> {
+    try {
+      const response = await firstValueFrom(this.http.post<User>(URL + 'auth', {}).pipe(timeout(2000)));
+      this.userState.setUser(response);
+      return;
+    } catch (error) {
+      console.error('An error occurred:', error);
+      return;
+    }
+  }
   login(email: string, password: string) {
-    return this.http.post<User>(url + 'auth/login', {
+    return this.http.post<User>(URL + 'auth/login', {
       email,
       password
     }).pipe(
-      catchError(err => {
-        if (err instanceof HttpErrorResponse) {
-          return of(new HttpErrorResponse({status: err.status}))
-        }
-        return of(Error(''))
-      })
+      catchError(this.handleError)
     )
   }
-
   register(email: string, username: string, password: string) {
-    return this.http.post<User>(url + 'auth/register', {
+    return this.http.post<User>(URL + 'auth/register', {
       email,
       username,
       password
     }).pipe(
-      catchError(err => {
-        if (err instanceof HttpErrorResponse) {
-          return of(new HttpErrorResponse({status: err.status}))
-        }
-        return of(Error(''))
-      })
+      catchError(this.handleError)
     )
   }
-
+  private handleError(error: HttpErrorResponse) {
+    console.error('An error occurred:', error);
+    return of(new HttpErrorResponse({status: error.status}));
+  }
 
 }

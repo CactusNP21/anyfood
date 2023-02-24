@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {url} from "../../../core/constants";
+import {URL} from "../../../core/constants";
 import { DishResponse} from "../../../models/dish";
 
 @Injectable({
@@ -14,9 +14,9 @@ export class AdminControllerService {
   route: string = 'dishes/'
 
   getUnapprovedDishes() {
-    return this.http.post<DishResponse[]>(url + this.route + 'unapproved', {})
+    return this.http.post<DishResponse[]>(URL + this.route + 'unapproved', {})
   }
   approveDish(id: string) {
-    return this.http.patch(url + this.route + id + '/approve', {})
+    return this.http.patch(URL + this.route + id + '/approve', {})
   }
 }

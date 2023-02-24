@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Subject} from "rxjs";
 import {ShopList, Update} from "../../models/shop-list";
-import {DishResponse} from "../../models/dish";
 
 
 @Injectable({
@@ -17,13 +16,32 @@ export class ShopListStateService {
       this.recalculate(dishes)
     })
   }
+
+  updateMarked() {
+    const marked = [...this._storage.values()].filter(value => value.marked).map(value => value.name)
+    localStorage.setItem('marked', JSON.stringify(marked))
+  }
+
+  mark(marked: string[]) {
+    marked.forEach(value => {
+      if (this._storage.get(value)) {
+        this._storage.get(value)!.marked = true
+      }
+    })
+  }
+
+
   get shopList() {
     return this._storage.values()
   }
 
+  clearStorage() {
+    this._storage.clear()
+  }
+
   async recalculate({old, updated}: Update): Promise<void> {
     if (old) {
-      const difference = updated.servings -  old.servings
+      const difference = updated.servings - old.servings
       for (const value of old.ingredients) {
         const current = this._storage.get(value.name)
         if (current) {
@@ -40,7 +58,6 @@ export class ShopListStateService {
             quantity: value.quantity * updated.servings
           })
         }
-
       }
       return
     }

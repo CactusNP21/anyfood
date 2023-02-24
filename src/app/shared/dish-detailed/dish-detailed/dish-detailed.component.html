@@ -10,7 +10,7 @@
       <div class="servings">
         <h2>Порцій:</h2>
         <mat-form-field appearance="outline" subscriptSizing="fixed">
-          <input matInput type="number" [value]="servings.count.toString()" [min]="1">
+          <input matInput type="number" [value]="servings.count.toString()" #s [min]="1" (change)="servings.change(+s.value)">
           <button matSuffix mat-icon-button (click)="servings.add()">
             <mat-icon>add</mat-icon>
           </button>
@@ -37,7 +37,7 @@
         <mat-icon matListItemIcon color="primary">horizontal_rule</mat-icon>
 
         <div class="ingredient">{{ingredient.name}}:
-          <span class="highlight">{{+ingredient.quantity * servings.count}} {{ingredient.unit}}</span>
+          <span class="highlight">{{+(ingredient.quantity * servings.count).toFixed(2)}} {{ingredient.unit}}</span>
         </div>
 
       </mat-list-item>

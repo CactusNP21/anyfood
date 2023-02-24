@@ -8,14 +8,7 @@ import {SpinnerOverlayService} from "./feature/spinner-overlay/service/spinner-o
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  constructor(private dishState: DishesStateService, private spinner: SpinnerOverlayService) {
-  }
-  ngOnInit() {
-    if (localStorage.getItem('saved')) {
-      this.dishState.savedDishes = JSON.parse(localStorage.getItem('saved')!)
-      return;
-    }
-  }
+export class AppComponent{
+
 
 }

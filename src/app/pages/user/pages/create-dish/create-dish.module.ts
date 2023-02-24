@@ -14,7 +14,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatMenuModule} from "@angular/material/menu";
-import {StopPropModule} from "../../../shared/directives/stop-prop.module";
+import {StopPropModule} from "../../../../shared/directives/stop-prop.module";
 import { AddStepDialogComponent } from './components/steps/add-step-dialog/add-step-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatExpansionModule} from "@angular/material/expansion";
@@ -25,6 +25,8 @@ import { PreviewDialogComponent } from './components/preview-dialog/preview-dial
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {DishBriefModule} from "../../../../shared/dish-brief/dish-brief.module";
+import {DishDetailedModule} from "../../../../shared/dish-detailed/dish-detailed.module";
 
 
 
@@ -37,28 +39,30 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     InformationComponent,
     PreviewDialogComponent,
   ],
-  imports: [
-    CommonModule,
-    CreateDishRoutingModule,
-    MatStepperModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatDividerModule,
-    MatIconModule,
-    FormsModule,
-    MatButtonModule,
-    MatTableModule,
-    MatMenuModule,
-    StopPropModule,
-    MatDialogModule,
-    MatExpansionModule,
-    CdkDropList,
-    CdkDrag,
-    MatChipsModule,
-    MatCardModule,
-    MatListModule,
-    MatSnackBarModule
-  ]
+    imports: [
+        CommonModule,
+        CreateDishRoutingModule,
+        MatStepperModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatDividerModule,
+        MatIconModule,
+        FormsModule,
+        MatButtonModule,
+        MatTableModule,
+        MatMenuModule,
+        StopPropModule,
+        MatDialogModule,
+        MatExpansionModule,
+        CdkDropList,
+        CdkDrag,
+        MatChipsModule,
+        MatCardModule,
+        MatListModule,
+        MatSnackBarModule,
+        DishBriefModule,
+        DishDetailedModule
+    ]
 })
 export class CreateDishModule { }

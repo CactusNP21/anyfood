@@ -9,23 +9,25 @@ export class UserStateService {
   constructor() {
   }
 
-  private username = ''
+  private _username = ''
   private role = ''
   private token = ''
   private email = ''
   private '_id' = ''
   setUser(userData: User): void {
+    console.log(userData)
     const {user, token} = userData
     const {role, username, _id, email} = user
-    this.username = username
+    this._username = username
     this.role = role
     this.token = token
     this._id = _id
     this.email = email
+    localStorage.setItem('token', this.token)
   }
 
-  getUsername(): string {
-    return this.username
+  get username(): string {
+    return this._username
   }
   get userToken(): string {
     return this.token

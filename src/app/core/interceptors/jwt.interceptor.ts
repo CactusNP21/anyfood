@@ -28,14 +28,14 @@ export class JwtInterceptor implements HttpInterceptor {
       console.log(bearerReq)
       return next.handle(bearerReq)
     }
-    // if (sessionStorage.getItem('token')! || localStorage.getItem('token')!) {
-    //   const bearerReq = request.clone({
-    //     headers: request.headers.set('Authorization',
-    //       'Bearer ' + (sessionStorage.getItem('token')! || localStorage.getItem('token'))!)
-    //   })
-    //   console.log(bearerReq)
-    //   return next.handle(bearerReq)
-    // }
+    if (sessionStorage.getItem('token') || localStorage.getItem('token')) {
+      const bearerReq = request.clone({
+        headers: request.headers.set('Authorization',
+          'Bearer ' + (sessionStorage.getItem('token')! || localStorage.getItem('token'))!)
+      })
+      console.log(bearerReq)
+      return next.handle(bearerReq)
+    }
 
     return next.handle(request);
   }
