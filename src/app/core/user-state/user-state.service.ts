@@ -13,7 +13,15 @@ export class UserStateService {
   private role = ''
   private token = ''
   private email = ''
-  private '_id' = ''
+  private _id = ''
+  clearUser() {
+    this._username = ''
+    this.role = ''
+    this.token=  ''
+    this.email = ''
+    this._id = ''
+    localStorage.removeItem('token')
+  }
   setUser(userData: User): void {
     console.log(userData)
     const {user, token} = userData

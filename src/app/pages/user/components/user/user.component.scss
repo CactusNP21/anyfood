@@ -1,5 +1,5 @@
 .user-page {
-  width: 95vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -67,4 +67,20 @@ mat-card-title-group {
    font-size: 1.25rem;
    background-color:#6babff  !important;
    color:  #002448 !important;
+}
+
+.layout{
+  width: 100% ;
+  overflow: hidden;
+  min-height: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 2vw;
+}
+
+.exit {
+  width: 30%;
+  margin-left: auto;
 }
