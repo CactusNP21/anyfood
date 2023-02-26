@@ -4,14 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-dev": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run anyfood:serve-ssr",
     "serve:ssr": "node dist/anyfood/server/main.js",
     "build:ssr": "ng build && ng run anyfood:server",
     "prerender": "ng run anyfood:prerender",
-    "test1": "ng run anyfood:prerender && ng run anyfood:prerender"
+    "vercel-build": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
