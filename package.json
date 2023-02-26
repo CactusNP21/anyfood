@@ -11,7 +11,7 @@
     "serve:ssr": "node dist/anyfood/server/main.js",
     "build:ssr": "ng build && ng run anyfood:server",
     "prerender": "ng run anyfood:prerender",
-    "vercel-build": "npm run build:ssr"
+    "vercel-build": "npm run anyfood:prerender"
   },
   "private": true,
   "dependencies": {
