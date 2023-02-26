@@ -11,9 +11,10 @@ import {UserStateService} from "../../../core/user-state/user-state.service";
 export class AuthenticationService {
   constructor(private http: HttpClient, private userState: UserStateService) {
   }
-  async quickLogin(): Promise<void> {
+  async quickLogin(token: string): Promise<void> {
     try {
-      const response = await firstValueFrom(this.http.post<User>(URL + 'auth', {}).pipe(timeout(2000)));
+      this.userState.userToken = token
+      const response = await firstValueFrom(this.http.post<User>(URL + 'auth', {}).pipe(timeout(4000)));
       this.userState.setUser(response);
       return;
     } catch (error) {

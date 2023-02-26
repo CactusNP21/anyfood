@@ -19,16 +19,19 @@ function initializeDishState(dishState: DishesStateService,
                              auth: AuthenticationService
                              ) {
    return async () => {
-    if (localStorage.getItem('saved')) {
-      dishState.savedDishes = JSON.parse(localStorage.getItem('saved')!);
-      dishState.change = false
-    }
-    if (localStorage.getItem('marked')) {
-      shopState.mark(JSON.parse(localStorage.getItem('marked')!))
-    }
-    if (localStorage.getItem('token')) {
-      await auth.quickLogin()
-    }
+     if (typeof window !== 'undefined') {
+       if (localStorage.getItem('saved')) {
+         dishState.savedDishes = JSON.parse(localStorage.getItem('saved')!);
+         dishState.change = false
+       }
+       if (localStorage.getItem('marked')) {
+         shopState.mark(JSON.parse(localStorage.getItem('marked')!))
+       }
+       if (localStorage.getItem('token')) {
+         await auth.quickLogin(localStorage.getItem('token')!)
+       }
+     }
+     return
   }
 }
 
@@ -38,7 +41,7 @@ function initializeDishState(dishState: DishesStateService,
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     RouterOutlet,
     AppRoutingModule,
     BrowserAnimationsModule,

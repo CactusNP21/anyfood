@@ -19,7 +19,9 @@ export class ShopListStateService {
 
   updateMarked() {
     const marked = [...this._storage.values()].filter(value => value.marked).map(value => value.name)
-    localStorage.setItem('marked', JSON.stringify(marked))
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('marked', JSON.stringify(marked))
+    }
   }
 
   mark(marked: string[]) {

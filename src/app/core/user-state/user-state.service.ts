@@ -14,14 +14,16 @@ export class UserStateService {
   private token = ''
   private email = ''
   private _id = ''
+
   clearUser() {
     this._username = ''
     this.role = ''
-    this.token=  ''
+    this.token = ''
     this.email = ''
     this._id = ''
     localStorage.removeItem('token')
   }
+
   setUser(userData: User): void {
     console.log(userData)
     const {user, token} = userData
@@ -37,12 +39,19 @@ export class UserStateService {
   get username(): string {
     return this._username
   }
+
   get userToken(): string {
     return this.token
   }
+
+  set userToken(token: string) {
+    this.token = token
+  }
+
   get userId(): string {
     return this._id
   }
+
   get userRole(): string {
     return this.role
   }
